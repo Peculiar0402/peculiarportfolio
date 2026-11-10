@@ -1,0 +1,6 @@
+{
+  "name": "Peculiar Portfolio",
+  "description": "Premium interactive creative portfolio showcasing digital storytelling, AI video production, brand campaigns, deliverables, and performance analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
