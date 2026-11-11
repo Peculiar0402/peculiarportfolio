@@ -29,19 +29,22 @@ export const storage = {
 
           // If stored items still have the old generic non-web3 samples, upgrade them to the new Web3 projects unless user customized them
           const migrated = parsed.map((p: Project) => {
+            let item = p;
             if (p.id === 'proj-1' && p.title === 'Aetheria: Decentralized Frontier Teaser') {
-              return INITIAL_PROJECTS[0];
+              item = INITIAL_PROJECTS[0];
+            } else if (p.id === 'proj-2' && p.title === 'Aurelia: Golden Elixir Luxury Campaign') {
+              item = INITIAL_PROJECTS[1];
+            } else if (p.id === 'proj-3' && p.title === 'Neon Horizon: Visual Storytelling & VFX Grade') {
+              item = INITIAL_PROJECTS[2];
+            } else if (p.id === 'proj-4' && p.title === 'Kinetix Velocity: High-Octane Social Campaign') {
+              item = INITIAL_PROJECTS[3];
             }
-            if (p.id === 'proj-2' && p.title === 'Aurelia: Golden Elixir Luxury Campaign') {
-              return INITIAL_PROJECTS[1];
+
+            // Normalize old /src/assets/images/ paths to /images/ for mobile device stability
+            if (item.coverImage && item.coverImage.startsWith('/src/assets/images/')) {
+              item = { ...item, coverImage: item.coverImage.replace('/src/assets/images/', '/images/') };
             }
-            if (p.id === 'proj-3' && p.title === 'Neon Horizon: Visual Storytelling & VFX Grade') {
-              return INITIAL_PROJECTS[2];
-            }
-            if (p.id === 'proj-4' && p.title === 'Kinetix Velocity: High-Octane Social Campaign') {
-              return INITIAL_PROJECTS[3];
-            }
-            return p;
+            return item;
           });
 
           if (hasOldTemplates) {

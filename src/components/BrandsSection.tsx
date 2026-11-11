@@ -1,6 +1,7 @@
 import React from 'react';
 import { Project } from '../types/portfolio';
-import { ArrowUpRight, Image as ImageIcon } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import { normalizeImageUrl, handleImageFallback } from '../utils/imageUtils';
 
 interface BrandsSectionProps {
   projects: Project[];
@@ -10,7 +11,9 @@ interface BrandsSectionProps {
 export const BrandsSection: React.FC<BrandsSectionProps> = ({ projects, onBrandClick }) => {
   // Extract active brand projects (exclude completely blank templates without brand or title)
   const brandProjects = projects.filter(
-    (p) => (p.brandName && p.brandName.trim().length > 0) || (p.title && p.title.trim().length > 0)
+    (p) =>
+      p.id !== 'proj-template' &&
+      ((p.brandName && p.brandName.trim().length > 0) || (p.title && p.title.trim().length > 0))
   );
 
   return (
@@ -40,7 +43,8 @@ export const BrandsSection: React.FC<BrandsSectionProps> = ({ projects, onBrandC
         {/* Interactive Brand Grid with Project Images */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
           {brandProjects.map((project) => {
-            const brandImage = project.brandLogoImage || project.coverImage;
+            const rawBrandImage = project.brandLogoImage || project.coverImage;
+            const brandImage = rawBrandImage ? normalizeImageUrl(rawBrandImage, project.category) : '';
             const brandLogoText =
               project.brandLogoText ||
               (project.brandName ? project.brandName.slice(0, 2).toUpperCase() : 'PE');
@@ -63,7 +67,8 @@ export const BrandsSection: React.FC<BrandsSectionProps> = ({ projects, onBrandC
                       <img
                         src={brandImage}
                         alt={project.brandName || project.title}
-                        referrerPolicy="no-referrer"
+                        loading="lazy"
+                        onError={(e) => handleImageFallback(e, project.category)}
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />

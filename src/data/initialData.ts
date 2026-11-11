@@ -14,7 +14,7 @@ export const INITIAL_PROJECTS: Project[] = [
     brandName: 'DogeMax Token',
     brandCategory: 'Memecoins & Community Tokens',
     brandLogoText: 'DM',
-    coverImage: '/src/assets/images/showcase_ai_cyberpunk_1794348743010.jpg',
+    coverImage: '/images/showcase_ai_cyberpunk_1794348743010.jpg',
     category: 'Memecoins',
     shortDescription: 'High-velocity viral launch campaign driving DexScreener #1 trending, 35+ Telegram alpha caller activations, and 14,000+ token holders.',
     fullOverview: 'Orchestrated the comprehensive pre-launch and launch-day promotional blitz for DogeMax. Coordinated meme creative engineering, coordinated Telegram raid squads, scheduled high-profile alpha caller drops across X and Telegram, and achieved organic DexScreener front-page trending within 90 minutes of DEX pool deployment.',
@@ -57,12 +57,12 @@ export const INITIAL_PROJECTS: Project[] = [
     media: [
       {
         type: 'image',
-        url: '/src/assets/images/showcase_ai_cyberpunk_1794348743010.jpg',
+        url: '/images/showcase_ai_cyberpunk_1794348743010.jpg',
         caption: 'Viral launch keyframe & DexScreener trending hero asset'
       },
       {
         type: 'image',
-        url: '/src/assets/images/hero_peculiar_cinematic_1794348742341.jpg',
+        url: '/images/hero_peculiar_cinematic_1794348742341.jpg',
         caption: 'Promotional war room & real-time caller coordination suite'
       }
     ],
@@ -84,7 +84,7 @@ export const INITIAL_PROJECTS: Project[] = [
     brandName: 'StakeVolt Casino',
     brandCategory: 'iGaming, Casino & Betting',
     brandLogoText: 'SV',
-    coverImage: '/src/assets/images/showcase_brand_commercial_1794348742458.jpg',
+    coverImage: '/images/showcase_brand_commercial_1794348742458.jpg',
     category: 'Casino & Betting',
     shortDescription: 'Multi-stage player onboarding sprint delivering 4,800 active crypto depositors, VIP high-roller acquisition, and affiliate streamer activation.',
     fullOverview: 'StakeVolt commissioned an aggressive user acquisition push to scale their Web3 sportsbook and crypto live casino. We deployed high-conversion influencer giveaways, live stream wagering raids, wager bonus hooks, and targeted Telegram crypto betting communities across CIS, LATAM, and Southeast Asia.',
@@ -127,7 +127,7 @@ export const INITIAL_PROJECTS: Project[] = [
     media: [
       {
         type: 'image',
-        url: '/src/assets/images/showcase_brand_commercial_1794348742458.jpg',
+        url: '/images/showcase_brand_commercial_1794348742458.jpg',
         caption: 'VIP high-roller tournament promotional visual'
       }
     ],
@@ -149,7 +149,7 @@ export const INITIAL_PROJECTS: Project[] = [
     brandName: 'ApexLaunch DEX',
     brandCategory: 'DEX, DeFi & Launchpads',
     brandLogoText: 'AL',
-    coverImage: '/src/assets/images/showcase_before_after_1794348743041.jpg',
+    coverImage: '/images/showcase_before_after_1794348743041.jpg',
     category: 'DEX & Launchpad',
     shortDescription: 'Comprehensive IDO launchpad awareness campaign generating $8.6M in initial token volume and 6,200 whitelisted pool participants.',
     fullOverview: 'ApexLaunch required maximum ecosystem visibility for their cross-chain liquidity protocol and Tier-1 launchpad debut. We structured a multi-tiered promotional blitz: liquidity provider incentive teasers, tier staking campaigns, co-promotional cross-posts with 8 ecosystem partner protocols, and heavily boosted X Spaces with leading DeFi founders.',
@@ -192,7 +192,7 @@ export const INITIAL_PROJECTS: Project[] = [
     media: [
       {
         type: 'image',
-        url: '/src/assets/images/showcase_before_after_1794348743041.jpg',
+        url: '/images/showcase_before_after_1794348743041.jpg',
         caption: 'ApexLaunch multi-chain DEX interface & tokenomics visual'
       }
     ],
@@ -214,7 +214,7 @@ export const INITIAL_PROJECTS: Project[] = [
     brandName: 'CyberClash Game',
     brandCategory: 'Web3 Gaming & Mini-Apps',
     brandLogoText: 'CC',
-    coverImage: '/src/assets/images/hero_peculiar_cinematic_1794348742341.jpg',
+    coverImage: '/images/hero_peculiar_cinematic_1794348742341.jpg',
     category: 'Web3 Gaming',
     shortDescription: 'Gamified player acquisition sprint onboarding 180,000+ active players onto Telegram mini-app and web3 PvP arenas.',
     fullOverview: 'CyberClash needed rapid community scale for their Telegram-native Web3 battle game. We constructed a viral referral loop, airdrop quest campaigns, micro-influencer gaming tournaments, and active guild onboarding that accelerated their daily active users (DAU) by over 600%.',
@@ -257,7 +257,7 @@ export const INITIAL_PROJECTS: Project[] = [
     media: [
       {
         type: 'image',
-        url: '/src/assets/images/hero_peculiar_cinematic_1794348742341.jpg',
+        url: '/images/hero_peculiar_cinematic_1794348742341.jpg',
         caption: 'GameFi player tournament broadcast and streaming suite'
       }
     ],
@@ -396,7 +396,7 @@ export const INITIAL_SHOWCASE_ITEMS = [
     title: 'DogeMax Viral Launch Ticker Blitz',
     type: 'video',
     category: 'Memecoin Campaign',
-    mediaUrl: '/src/assets/images/showcase_ai_cyberpunk_1794348743010.jpg',
+    mediaUrl: '/images/showcase_ai_cyberpunk_1794348743010.jpg',
     videoPreviewUrl: '',
     duration: '01:00',
     description: 'DexScreener #1 trending promotional blitz and synchronized caller storm.'
@@ -406,7 +406,7 @@ export const INITIAL_SHOWCASE_ITEMS = [
     title: 'StakeVolt High-Roller Casino Showcase',
     type: 'image',
     category: 'Crypto Casino & Betting',
-    mediaUrl: '/src/assets/images/showcase_brand_commercial_1794348742458.jpg',
+    mediaUrl: '/images/showcase_brand_commercial_1794348742458.jpg',
     duration: '',
     description: 'High-conversion VIP player acquisition campaign generating $2.8M in wagering volume.'
   },
@@ -415,9 +415,9 @@ export const INITIAL_SHOWCASE_ITEMS = [
     title: 'ApexLaunch Multi-Chain DEX Reveal',
     type: 'before_after',
     category: 'DEX & Launchpad',
-    mediaUrl: '/src/assets/images/showcase_before_after_1794348743041.jpg',
-    beforeUrl: '/src/assets/images/showcase_before_after_1794348743041.jpg',
-    afterUrl: '/src/assets/images/showcase_before_after_1794348743041.jpg',
+    mediaUrl: '/images/showcase_before_after_1794348743041.jpg',
+    beforeUrl: '/images/showcase_before_after_1794348743041.jpg',
+    afterUrl: '/images/showcase_before_after_1794348743041.jpg',
     duration: '',
     description: 'Interactive comparison between raw organic outreach vs. coordinated multi-channel launchpad blitz.'
   },
@@ -426,7 +426,7 @@ export const INITIAL_SHOWCASE_ITEMS = [
     title: 'Web3 Growth & Marketing Suite',
     type: 'image',
     category: 'Campaign Operations',
-    mediaUrl: '/src/assets/images/hero_peculiar_cinematic_1794348742341.jpg',
+    mediaUrl: '/images/hero_peculiar_cinematic_1794348742341.jpg',
     duration: '',
     description: 'Inside Peculiar’s real-time campaign monitoring, raid operations, and alpha caller dashboard.'
   }

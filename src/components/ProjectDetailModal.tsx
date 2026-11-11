@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Project } from '../types/portfolio';
 import { X, ExternalLink, Calendar, Clock, DollarSign, CheckCircle2, Award, Briefcase, Eye, EyeOff, Layers, Sparkles, Send, MessageCircle, Globe, Edit3 } from 'lucide-react';
+import { normalizeImageUrl, handleImageFallback } from '../utils/imageUtils';
 
 interface ProjectDetailModalProps {
   project: Project | null;
@@ -33,24 +34,25 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
         <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-800 bg-zinc-900/60 sticky top-0 z-20 backdrop-blur-md">
           <div className="flex items-center gap-3">
             <span className="w-8 h-8 rounded-lg bg-amber-400/10 border border-amber-400/30 text-amber-300 font-mono font-bold text-xs flex items-center justify-center">
-              {project.brandLogoText || project.brandName.slice(0, 2).toUpperCase()}
+              {project.brandLogoText || (project.brandName ? project.brandName.slice(0, 2).toUpperCase() : 'PE')}
             </span>
             <div>
               <div className="text-xs font-mono text-zinc-400 uppercase tracking-wider">
-                {project.brandName || 'New Brand Template'} · {project.category}
+                {project.brandName || 'Web3 Project'} · {project.category}
               </div>
               <h2 className="text-base sm:text-lg font-bold text-white font-display truncate max-w-md sm:max-w-xl">
-                {project.title || 'Untitled Project Template'}
+                {project.title || 'Campaign Overview'}
               </h2>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
-            {onEdit && (
+            {/* ONLY VISIBLE TO LOGGED-IN ADMIN */}
+            {isAdmin && onEdit && (
               <button
                 onClick={() => onEdit(project)}
                 className="px-3 py-1.5 text-xs font-medium text-amber-400 hover:text-black hover:bg-amber-400 border border-amber-400/40 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
-                title="Edit this project's images, socials, text, or payment"
+                title="Edit this project"
               >
                 <Edit3 className="w-3.5 h-3.5" />
                 <span>Edit Project</span>
@@ -73,43 +75,25 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           {/* Main Visual Media Display */}
           <div className="space-y-3">
             <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-black border border-zinc-800 group shadow-lg flex items-center justify-center">
-              {project.media && project.media.length > 0 && project.media[activeMediaIndex]?.url ? (
-                <img
-                  src={project.media[activeMediaIndex]?.url}
-                  alt={project.title || 'Project Preview'}
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
-                />
-              ) : project.coverImage ? (
-                <img
-                  src={project.coverImage}
-                  alt={project.title || 'Project Preview'}
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div
-                  onClick={() => onEdit?.(project)}
-                  className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 text-center cursor-pointer border-2 border-dashed border-zinc-800 hover:border-amber-400/50 transition-colors"
-                >
-                  <div className="w-14 h-14 rounded-2xl bg-zinc-850 flex items-center justify-center text-amber-400 mb-3 shadow-lg">
-                    <Edit3 className="w-6 h-6" />
-                  </div>
-                  <div className="text-sm font-semibold text-white">No Cover Image Uploaded</div>
-                  <div className="text-xs text-amber-400 mt-1 font-mono">
-                    Click &ldquo;Edit Project&rdquo; to upload an image from your device
-                  </div>
-                </div>
-              )}
+              <img
+                src={normalizeImageUrl(
+                  project.media && project.media.length > 0 && project.media[activeMediaIndex]?.url
+                    ? project.media[activeMediaIndex]?.url
+                    : project.coverImage,
+                  project.category
+                )}
+                alt={project.title || 'Project Preview'}
+                loading="lazy"
+                onError={(e) => handleImageFallback(e, project.category)}
+                className="w-full h-full object-cover"
+              />
 
               {/* Caption Scrim */}
-              {(project.coverImage || (project.media && project.media.length > 0)) && (
-                <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-                  <p className="text-xs sm:text-sm text-zinc-300 font-sans">
-                    {project.media?.[activeMediaIndex]?.caption || project.shortDescription}
-                  </p>
-                </div>
-              )}
+              <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
+                <p className="text-xs sm:text-sm text-zinc-300 font-sans">
+                  {project.media?.[activeMediaIndex]?.caption || project.shortDescription}
+                </p>
+              </div>
             </div>
 
             {/* Media Thumbnail Selector if multiple media items */}
@@ -126,9 +110,10 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                     }`}
                   >
                     <img
-                      src={item.url}
-                      alt={item.caption}
-                      referrerPolicy="no-referrer"
+                      src={normalizeImageUrl(item.url, project.category)}
+                      alt={item.caption || 'Thumbnail'}
+                      loading="lazy"
+                      onError={(e) => handleImageFallback(e, project.category)}
                       className="w-full h-full object-cover"
                     />
                   </button>

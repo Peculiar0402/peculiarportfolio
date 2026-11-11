@@ -2,6 +2,8 @@ import React, { useState, useMemo } from 'react';
 import { Project, ProjectCategory } from '../types/portfolio';
 import { Eye, EyeOff, Plus, ArrowUpRight, Calendar, DollarSign, Edit3, Send, MessageCircle, Globe, Sparkles } from 'lucide-react';
 
+import { normalizeImageUrl, handleImageFallback } from '../utils/imageUtils';
+
 interface ProjectsSectionProps {
   projects: Project[];
   onSelectProject: (project: Project) => void;
@@ -34,6 +36,11 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
   const filteredProjects = useMemo(() => {
     return projects.filter((p) => {
+      // READ-ONLY PUBLIC ENFORCEMENT:
+      // If visitor (not logged in as admin), never show incomplete blank template cards
+      if (!isAdmin && (!p.title || p.title.trim().length === 0 || p.id === 'proj-template')) {
+        return false;
+      }
       const matchesCategory =
         selectedCategory === 'All Projects' || p.category === selectedCategory;
       const matchesQuery =
@@ -42,7 +49,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
         p.shortDescription.toLowerCase().includes(searchQuery.toLowerCase());
       return matchesCategory && matchesQuery;
     });
-  }, [projects, selectedCategory, searchQuery]);
+  }, [projects, selectedCategory, searchQuery, isAdmin]);
 
   return (
     <section id="projects" className="py-20 sm:py-28 relative">
@@ -59,41 +66,46 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               Web3 Campaigns &amp; Client Projects
             </h2>
             <p className="text-zinc-400 text-sm mt-2 max-w-xl">
-              Showcase of verified promotional blitzes across Memecoins, Crypto Casinos, Betting, DEXs, Launchpads, and Web3 Gaming. Fully editable with deliverables, volume metrics, and socials.
+              Showcase of verified promotional blitzes across Memecoins, Crypto Casinos, Betting, DEXs, Launchpads, and Web3 Gaming with deliverables, volume metrics, and socials.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
-            <button
-              onClick={onAddNewProject}
-              className="inline-flex items-center gap-2 px-4 py-2.5 text-xs font-semibold text-black bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 rounded-xl transition-all cursor-pointer shadow-md shadow-amber-400/25"
-            >
-              <Plus className="w-4 h-4" />
-              <span>Add New Project</span>
-            </button>
+            {/* ADD NEW PROJECT BUTTON: ONLY VISIBLE TO LOGGED IN ADMIN */}
+            {isAdmin && (
+              <button
+                onClick={onAddNewProject}
+                className="inline-flex items-center gap-2 px-4 py-2.5 text-xs font-semibold text-black bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 rounded-xl transition-all cursor-pointer shadow-md shadow-amber-400/25"
+              >
+                <Plus className="w-4 h-4" />
+                <span>Add New Project</span>
+              </button>
+            )}
 
             <div className="text-xs font-mono text-zinc-500 bg-zinc-900/60 px-3 py-2 rounded-xl border border-zinc-800">
-              Showing <span className="text-amber-400 font-semibold">{filteredProjects.length}</span> of {projects.length}
+              Showing <span className="text-amber-400 font-semibold">{filteredProjects.length}</span> of {projects.filter(p => isAdmin || (p.title && p.id !== 'proj-template')).length}
             </div>
           </div>
         </div>
 
-        {/* Quick Helper Ribbon */}
-        <div className="mb-8 p-3.5 rounded-xl bg-zinc-950/80 border border-amber-400/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-          <div className="flex items-center gap-2 text-zinc-300">
-            <span className="w-2 h-2 rounded-full bg-amber-400" />
-            <span>
-              <strong>Project Template Ready:</strong> Click <em>&ldquo;Edit Project&rdquo;</em> on any card to update its title, upload your photos/videos, or connect Telegram, Discord &amp; X socials.
-            </span>
-          </div>
+        {/* Quick Helper Ribbon: ONLY VISIBLE TO LOGGED IN ADMIN */}
+        {isAdmin && (
+          <div className="mb-8 p-3.5 rounded-xl bg-zinc-950/80 border border-amber-400/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+            <div className="flex items-center gap-2 text-zinc-300">
+              <span className="w-2 h-2 rounded-full bg-amber-400" />
+              <span>
+                <strong>Admin Mode Active:</strong> Click <em>&ldquo;Edit&rdquo;</em> on any card below to update deliverables, replace images, or configure social links.
+              </span>
+            </div>
 
-          <button
-            onClick={onAddNewProject}
-            className="text-xs font-mono text-amber-400 hover:text-amber-300 underline underline-offset-4 cursor-pointer shrink-0"
-          >
-            + Create Blank Project Template
-          </button>
-        </div>
+            <button
+              onClick={onAddNewProject}
+              className="text-xs font-mono text-amber-400 hover:text-amber-300 underline underline-offset-4 cursor-pointer shrink-0"
+            >
+              + Create Blank Project
+            </button>
+          </div>
+        )}
 
         {/* Filter Navigation Bar (Interactive Segmented Buttons) */}
         <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar">
@@ -118,7 +130,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
         {/* Project Cards Grid */}
         {filteredProjects.length === 0 ? (
           <div className="text-center py-20 border border-zinc-800/80 rounded-2xl bg-zinc-950/40">
-            <p className="text-zinc-400 text-sm">No projects found matching the current criteria.</p>
+            <p className="text-zinc-400 text-sm">No campaigns found matching the current criteria.</p>
             <button
               onClick={() => {
                 setSelectedCategory('All Projects');
@@ -134,12 +146,14 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             {filteredProjects.map((project) => {
               const isPaidHidden = hideAllEarnings || project.isPaymentHidden;
               const hasSocials = project.socials && (project.socials.telegram || project.socials.discord || project.socials.x || project.socials.website);
+              const resolvedImage = normalizeImageUrl(project.coverImage, project.category);
 
               return (
                 <div
                   key={project.id}
                   onClick={() => {
-                    if (!project.title || project.id === 'proj-template') {
+                    // For public visitors: ALWAYS open case study detail modal (Read-Only)
+                    if (isAdmin && (!project.title || project.id === 'proj-template')) {
                       onEditProject?.(project);
                     } else {
                       onSelectProject(project);
@@ -147,47 +161,33 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   }}
                   className="group relative flex flex-col bg-zinc-950/90 rounded-2xl border border-zinc-800/90 hover:border-amber-400/40 overflow-hidden shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
                 >
-                  {/* Media Cover Image */}
-                  <div className="relative aspect-video w-full overflow-hidden bg-zinc-950 flex items-center justify-center border-b border-zinc-850">
-                    {project.coverImage ? (
-                      <img
-                        src={project.coverImage}
-                        alt={project.title || 'Project'}
-                        referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-zinc-900/90 to-zinc-950 p-6 text-center border-2 border-dashed border-zinc-800 group-hover:border-amber-400/50 transition-colors">
-                        <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-700/80 flex items-center justify-center text-amber-400 mb-2 group-hover:scale-110 transition-transform shadow-md">
-                          <Plus className="w-6 h-6" />
-                        </div>
-                        <span className="text-xs font-mono font-medium text-amber-300">
-                          + Click to Add Image
-                        </span>
-                        <span className="text-[10px] text-zinc-500 font-mono mt-0.5">
-                          Editable Template
-                        </span>
-                      </div>
-                    )}
+                  {/* Media Cover Image - Optimized for Mobile & Desktop */}
+                  <div className="relative aspect-video w-full overflow-hidden bg-zinc-900 flex items-center justify-center border-b border-zinc-850">
+                    <img
+                      src={resolvedImage}
+                      alt={project.title || project.brandName || 'Campaign'}
+                      loading="lazy"
+                      onError={(e) => handleImageFallback(e, project.category)}
+                      className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
+                    />
 
                     {/* Gradient scrim */}
-                    {project.coverImage && (
-                      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent pointer-events-none" />
-                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent pointer-events-none" />
 
                     {/* Top Brand Logo, Status & Direct Edit Button */}
                     <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between">
                       <div className="flex items-center gap-2 pointer-events-none">
                         <span className="w-7 h-7 rounded-md bg-black/75 backdrop-blur-md border border-white/10 text-amber-300 font-mono text-xs font-bold flex items-center justify-center">
-                          {project.brandLogoText || (project.brandName ? project.brandName.slice(0, 2).toUpperCase() : '+')}
+                          {project.brandLogoText || (project.brandName ? project.brandName.slice(0, 2).toUpperCase() : 'PE')}
                         </span>
                         <span className="text-xs font-semibold text-white px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-md border border-white/10">
-                          {project.brandName || 'New Brand'}
+                          {project.brandName || 'Web3 Project'}
                         </span>
                       </div>
 
                       <div className="flex items-center gap-1.5">
-                        {onEditProject && (
+                        {/* EDIT BUTTON: ONLY VISIBLE TO LOGGED IN ADMIN */}
+                        {isAdmin && onEditProject && (
                           <button
                             type="button"
                             onClick={(e) => {
@@ -195,7 +195,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                               onEditProject(project);
                             }}
                             className="px-2.5 py-1 rounded-md bg-black/80 hover:bg-amber-400 text-zinc-300 hover:text-black border border-white/10 text-[11px] font-mono flex items-center gap-1 transition-all cursor-pointer shadow-md"
-                            title="Edit this project's template, image, or socials"
+                            title="Edit this project"
                           >
                             <Edit3 className="w-3 h-3" />
                             <span>Edit</span>

@@ -83,11 +83,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           {/* Right Column: Large Visual Media Container */}
           <div className="lg:col-span-5 relative flex items-center">
-            <div className="relative w-full h-full min-h-[380px] lg:min-h-[440px] rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-950/80 shadow-2xl group">
+            <div className="relative w-full aspect-[4/3] sm:aspect-auto sm:h-full min-h-[300px] sm:min-h-[380px] lg:min-h-[440px] rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-950/80 shadow-2xl group">
               <img
-                src="/src/assets/images/hero_peculiar_cinematic_1794348742341.jpg"
-                alt="Peculiar in studio directing AI visuals and color suite"
-                referrerPolicy="no-referrer"
+                src="/images/hero_peculiar_cinematic_1794348742341.jpg"
+                alt="Peculiar Web3 Growth & Promotion Suite"
+                loading="eager"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.src.includes('/src/assets/images/')) {
+                    target.src = '/src/assets/images/hero_peculiar_cinematic_1794348742341.jpg';
+                  }
+                }}
                 className="w-full h-full object-cover object-center transform transition-transform duration-700 group-hover:scale-105"
               />
 

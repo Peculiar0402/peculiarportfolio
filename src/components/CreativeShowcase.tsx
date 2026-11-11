@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Project } from '../types/portfolio';
 import { Play, Maximize2, X, Sliders, ExternalLink } from 'lucide-react';
+import { normalizeImageUrl, handleImageFallback } from '../utils/imageUtils';
 
 interface CreativeShowcaseProps {
   projects: Project[];
@@ -167,9 +168,10 @@ export const CreativeShowcase: React.FC<CreativeShowcaseProps> = ({ projects, on
           >
             {/* Background: After (Final Graded / VFX) Image */}
             <img
-              src={comparisonImage}
+              src={normalizeImageUrl(comparisonImage)}
               alt="After: Final ACES Graded Frame"
-              referrerPolicy="no-referrer"
+              loading="lazy"
+              onError={(e) => handleImageFallback(e)}
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-black/75 backdrop-blur-md rounded-md border border-amber-400/30 text-xs font-mono text-amber-300">
@@ -182,9 +184,10 @@ export const CreativeShowcase: React.FC<CreativeShowcaseProps> = ({ projects, on
               style={{ width: `${sliderPosition}%` }}
             >
               <img
-                src={comparisonImage}
+                src={normalizeImageUrl(comparisonImage)}
                 alt="Before: Raw Log Frame"
-                referrerPolicy="no-referrer"
+                loading="lazy"
+                onError={(e) => handleImageFallback(e)}
                 className="absolute inset-0 w-full h-full object-cover max-w-none"
                 style={{
                   width: containerRef.current ? `${containerRef.current.clientWidth}px` : '100%',
@@ -228,9 +231,10 @@ export const CreativeShowcase: React.FC<CreativeShowcaseProps> = ({ projects, on
               className="group relative rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-950 aspect-[4/3] cursor-pointer shadow-xl transition-all duration-300 hover:border-amber-400/40"
             >
               <img
-                src={card.image}
+                src={normalizeImageUrl(card.image, card.category)}
                 alt={card.title}
-                referrerPolicy="no-referrer"
+                loading="lazy"
+                onError={(e) => handleImageFallback(e, card.category)}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent p-5 flex flex-col justify-between">
@@ -289,9 +293,10 @@ export const CreativeShowcase: React.FC<CreativeShowcaseProps> = ({ projects, on
             {/* Media Body */}
             <div className="relative aspect-video w-full bg-black flex items-center justify-center">
               <img
-                src={activeItem.mediaUrl}
+                src={normalizeImageUrl(activeItem.mediaUrl, activeItem.category)}
                 alt={activeItem.title}
-                referrerPolicy="no-referrer"
+                loading="lazy"
+                onError={(e) => handleImageFallback(e, activeItem.category)}
                 className="max-h-full max-w-full object-contain"
               />
 

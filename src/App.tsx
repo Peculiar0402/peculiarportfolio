@@ -264,9 +264,15 @@ export default function App() {
             {/* Video Presentation Viewport */}
             <div className="relative aspect-video w-full bg-black flex items-center justify-center overflow-hidden">
               <img
-                src="/src/assets/images/showcase_ai_cyberpunk_1794348743010.jpg"
+                src="/images/showcase_ai_cyberpunk_1794348743010.jpg"
                 alt="Showreel Master Keyframe"
-                referrerPolicy="no-referrer"
+                loading="lazy"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.src.includes('/src/assets/images/')) {
+                    target.src = '/src/assets/images/showcase_ai_cyberpunk_1794348743010.jpg';
+                  }
+                }}
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col items-center justify-center p-6 text-center">
