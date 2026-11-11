@@ -10,52 +10,73 @@
   html {
     scroll-behavior: smooth;
     font-family: var(--font-sans);
-    background-color: #07070a;
+    background-color: #060608;
     color: #f1f5f9;
     color-scheme: dark;
   }
 
   ::selection {
-    background-color: rgba(229, 184, 105, 0.3);
+    background-color: rgba(212, 175, 55, 0.25);
     color: #ffffff;
   }
 }
 
-/* Custom subtle scrollbar */
+/* Subtle Obsidian Executive Scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #09090d;
+  background: #060608;
 }
 ::-webkit-scrollbar-thumb {
-  background: #232330;
-  border-radius: 9999px;
+  background: #1c1c24;
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #39394f;
+  background: #2e2e3d;
 }
 
-/* Luxury gold text gradient */
+/* Luxury Obsidian Executive Gradients & Foil Effects */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #fef3c7 0%, #f59e0b 50%, #d97706 100%);
+  background: linear-gradient(135deg, #fef3c7 0%, #e2be75 45%, #c59b48 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gold-shimmer {
-  background: linear-gradient(90deg, #f3d489 0%, #ffffff 50%, #e5b869 100%);
+  background: linear-gradient(90deg, #c59b48 0%, #ffffff 40%, #fef3c7 70%, #c59b48 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shine 4s linear infinite;
+  animation: shine 5s linear infinite;
 }
 
 @keyframes shine {
   to {
     background-position: 200% center;
   }
+}
+
+/* Obsidian Glass Card Surfaces */
+.obsidian-panel {
+  background: linear-gradient(180deg, rgba(18, 18, 24, 0.85) 0%, rgba(9, 9, 13, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+}
+
+.obsidian-panel-glow {
+  background: linear-gradient(180deg, rgba(22, 22, 30, 0.9) 0%, rgba(10, 10, 14, 0.95) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 14px 40px -10px rgba(212, 175, 55, 0.08);
+}
+
+/* Hairline Grid Accent Background */
+.bg-executive-grid {
+  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 }
 
 .font-display {

@@ -44,22 +44,27 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-zinc-950/85 backdrop-blur-md border-b border-zinc-800/80 shadow-lg shadow-black/40 py-3.5'
-          : 'bg-transparent border-b border-white/5 py-5'
+          ? 'bg-[#060608]/92 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.8)] py-3'
+          : 'bg-transparent border-b border-white/[0.04] py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-8">
         {/* Zone 1: Brand Wordmark */}
         <button
           onClick={() => handleLinkClick('hero')}
-          className="text-lg sm:text-xl font-extrabold tracking-tight text-white whitespace-nowrap shrink-0 flex items-center gap-2 group cursor-pointer"
+          className="text-left flex items-center gap-2.5 group cursor-pointer"
         >
-          <span className="font-display tracking-wider">PECULIAR</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 group-hover:scale-125 transition-transform" />
+          <span className="w-2 h-2 rotate-45 bg-[#d4af37] shadow-[0_0_10px_#d4af37] group-hover:scale-125 transition-transform" />
+          <span className="font-display tracking-[0.2em] font-black text-white text-base sm:text-lg">
+            PECULIAR
+          </span>
+          <span className="hidden sm:inline-block text-[9px] font-mono tracking-[0.2em] uppercase text-zinc-400 border-l border-zinc-800 pl-2.5 py-0.5">
+            EXECUTIVE SUITE
+          </span>
         </button>
 
         {/* Zone 2: Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-7 text-xs font-medium tracking-wide uppercase">
+        <nav className="hidden lg:flex items-center gap-7 text-[11px] font-mono tracking-[0.15em] uppercase">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
             return (
@@ -68,13 +73,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => handleLinkClick(link.id)}
                 className={`transition-colors whitespace-nowrap shrink-0 cursor-pointer relative py-1 ${
                   isActive
-                    ? 'text-amber-400'
-                    : 'text-zinc-400 hover:text-zinc-100'
+                    ? 'text-[#f5deaa] font-semibold'
+                    : 'text-zinc-400 hover:text-white'
                 }`}
               >
                 {link.label}
                 {isActive && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-amber-400 to-purple-500 rounded-full" />
+                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#d4af37] to-[#e5c178]" />
                 )}
               </button>
             );
@@ -86,18 +91,18 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Admin trigger */}
           <button
             onClick={onOpenAdmin}
-            className={`p-2 rounded-lg text-xs transition-colors flex items-center gap-1.5 cursor-pointer ${
+            className={`p-2 rounded-md text-xs transition-colors flex items-center gap-1.5 cursor-pointer ${
               isAdminLoggedIn
-                ? 'bg-amber-400/10 text-amber-300 border border-amber-400/30'
-                : 'text-zinc-400 hover:text-white hover:bg-zinc-800/60'
+                ? 'bg-[#d4af37]/15 text-[#f5deaa] border border-[#d4af37]/40 shadow-[0_0_12px_rgba(212,175,55,0.2)]'
+                : 'text-zinc-500 hover:text-zinc-300 hover:bg-white/[0.04] border border-transparent'
             }`}
-            title={isAdminLoggedIn ? 'Admin Panel Active (Logged In)' : 'Admin Login (Manage Portfolio)'}
+            title={isAdminLoggedIn ? 'Executive Admin Active (Logged In)' : 'Executive Portal Login'}
             aria-label="Admin portal"
           >
             {isAdminLoggedIn ? (
               <>
-                <Unlock className="w-3.5 h-3.5 text-amber-400" />
-                <span className="hidden sm:inline text-[11px] font-mono">ADMIN</span>
+                <Unlock className="w-3.5 h-3.5 text-[#d4af37]" />
+                <span className="hidden sm:inline text-[10px] font-mono tracking-wider">ADMIN</span>
               </>
             ) : (
               <Lock className="w-3.5 h-3.5" />
@@ -107,16 +112,16 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Primary CTA */}
           <button
             onClick={() => handleLinkClick('contact')}
-            className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-black bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 rounded-lg shadow-sm shadow-amber-500/20 hover:shadow-amber-500/40 transition-all duration-200 whitespace-nowrap shrink-0 cursor-pointer"
+            className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 text-[11px] font-mono uppercase tracking-[0.15em] font-semibold text-black bg-gradient-to-r from-[#fae8c8] via-[#e5c178] to-[#c59d4c] hover:brightness-110 rounded-md shadow-md shadow-[#c59d4c]/20 transition-all duration-200 whitespace-nowrap shrink-0 cursor-pointer"
           >
-            <span>LET&apos;S COLLABORATE</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <span>DIRECT DESK</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-black" />
           </button>
 
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-zinc-300 hover:text-white rounded-lg hover:bg-zinc-800/60 transition-colors"
+            className="lg:hidden p-2 text-zinc-300 hover:text-white rounded-md hover:bg-zinc-800/60 transition-colors"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
