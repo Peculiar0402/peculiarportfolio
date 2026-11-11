@@ -37,10 +37,10 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
             </span>
             <div>
               <div className="text-xs font-mono text-zinc-400 uppercase tracking-wider">
-                {project.brandName} · {project.category}
+                {project.brandName || 'New Brand Template'} · {project.category}
               </div>
               <h2 className="text-base sm:text-lg font-bold text-white font-display truncate max-w-md sm:max-w-xl">
-                {project.title}
+                {project.title || 'Untitled Project Template'}
               </h2>
             </div>
           </div>
@@ -72,29 +72,44 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           
           {/* Main Visual Media Display */}
           <div className="space-y-3">
-            <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-black border border-zinc-800 group shadow-lg">
-              {project.media && project.media.length > 0 ? (
+            <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-black border border-zinc-800 group shadow-lg flex items-center justify-center">
+              {project.media && project.media.length > 0 && project.media[activeMediaIndex]?.url ? (
                 <img
-                  src={project.media[activeMediaIndex]?.url || project.coverImage}
-                  alt={project.title}
+                  src={project.media[activeMediaIndex]?.url}
+                  alt={project.title || 'Project Preview'}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover"
+                />
+              ) : project.coverImage ? (
+                <img
+                  src={project.coverImage}
+                  alt={project.title || 'Project Preview'}
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <img
-                  src={project.coverImage}
-                  alt={project.title}
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
-                />
+                <div
+                  onClick={() => onEdit?.(project)}
+                  className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 text-center cursor-pointer border-2 border-dashed border-zinc-800 hover:border-amber-400/50 transition-colors"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-zinc-850 flex items-center justify-center text-amber-400 mb-3 shadow-lg">
+                    <Edit3 className="w-6 h-6" />
+                  </div>
+                  <div className="text-sm font-semibold text-white">No Cover Image Uploaded</div>
+                  <div className="text-xs text-amber-400 mt-1 font-mono">
+                    Click &ldquo;Edit Project&rdquo; to upload an image from your device
+                  </div>
+                </div>
               )}
 
               {/* Caption Scrim */}
-              <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-                <p className="text-xs sm:text-sm text-zinc-300 font-sans">
-                  {project.media?.[activeMediaIndex]?.caption || project.shortDescription}
-                </p>
-              </div>
+              {(project.coverImage || (project.media && project.media.length > 0)) && (
+                <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
+                  <p className="text-xs sm:text-sm text-zinc-300 font-sans">
+                    {project.media?.[activeMediaIndex]?.caption || project.shortDescription}
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Media Thumbnail Selector if multiple media items */}

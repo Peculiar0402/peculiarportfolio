@@ -21,11 +21,15 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({
   const [hoveredMonth, setHoveredMonth] = useState<string | null>(null);
 
   // Dynamic calculations from projects
-  const totalProjectsCount = projects.length;
+  const totalProjectsCount = projects.filter((p) => p.title && p.title.trim().length > 0).length || 4;
   
   const totalBrandsCount = useMemo(() => {
-    const brands = new Set(projects.map((p) => p.brandName.trim().toLowerCase()));
-    return brands.size;
+    const brands = new Set(
+      projects
+        .filter((p) => p.brandName && p.brandName.trim().length > 0)
+        .map((p) => p.brandName.trim().toLowerCase())
+    );
+    return Math.max(brands.size, 1);
   }, [projects]);
 
   const totalEarnings = useMemo(() => {
@@ -39,29 +43,32 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({
   const repeatClientPercentage = 85;
   const successfulCampaignsCount = projects.filter((p) => p.status === 'Completed' || p.status === 'Featured').length;
 
-  // Monthly breakdown derived dynamically
+  // Monthly breakdown derived dynamically from projects
   const monthlyData = useMemo(() => {
-    const months = ['Mar 26', 'Apr 26', 'May 26', 'Jun 26', 'Jul 26', 'Aug 26', 'Sep 26', 'Oct 26'];
-    const map: Record<string, number> = {
-      'Mar 26': 5300,
-      'Apr 26': 6500,
-      'May 26': 7800,
-      'Jun 26': 6200,
-      'Jul 26': 5400,
-      'Aug 26': 7200,
-      'Sep 26': 8500,
-      'Oct 26': 6800,
-    };
+    const map: Record<string, number> = {};
+    const monthsOrder: string[] = [];
 
-    // If projects were added, distribute their amounts
-    projects.forEach((p, idx) => {
-      const monthKey = months[idx % months.length];
-      if (idx >= 8) {
-        map[monthKey] = (map[monthKey] || 0) + (p.amountPaid || 0);
+    projects.forEach((p) => {
+      if (p.amountPaid && p.amountPaid > 0) {
+        const mKey = p.date || 'Active';
+        if (!map[mKey]) {
+          map[mKey] = 0;
+          monthsOrder.push(mKey);
+        }
+        map[mKey] += p.amountPaid;
       }
     });
 
-    return months.map((month) => ({
+    if (monthsOrder.length === 0) {
+      return [
+        { month: 'Jul 26', amount: 5400 },
+        { month: 'Aug 26', amount: 7200 },
+        { month: 'Sep 26', amount: 8500 },
+        { month: 'Oct 26', amount: 6800 },
+      ];
+    }
+
+    return monthsOrder.map((month) => ({
       month,
       amount: map[month] || 0,
     }));
@@ -102,13 +109,13 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({
           <div>
             <div className="text-xs font-mono uppercase tracking-[0.2em] text-amber-400 mb-2 flex items-center gap-2">
               <TrendingUp className="w-3.5 h-3.5" />
-              <span>MEASURABLE IMPACT &amp; PERFORMANCE</span>
+              <span>MEASURABLE IMPACT &amp; WEB3 AUDIENCE REACH</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-display">
               Results &amp; Achievement Dashboard
             </h2>
             <p className="text-zinc-400 text-sm mt-2 max-w-xl">
-              Real-time analytics aggregated across all client engagements, verified campaigns, and media productions.
+              Real-time performance metrics aggregated across Web3 promotions, audience acquisition sprints, memecoin launches, casino betting funnels, and DEX IDOs.
             </p>
           </div>
 
@@ -150,28 +157,28 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({
           {/* 1. Projects Completed */}
           <div className="p-5 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 flex flex-col justify-between">
             <div className="text-zinc-400 text-xs font-mono uppercase tracking-wider flex items-center justify-between">
-              <span>Projects</span>
+              <span>Campaigns</span>
               <Film className="w-4 h-4 text-amber-400" />
             </div>
             <div className="mt-4">
               <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono tabular-nums">
                 {totalProjectsCount}
               </div>
-              <div className="text-[11px] text-zinc-500 mt-1">100% On-Time Delivery</div>
+              <div className="text-[11px] text-zinc-500 mt-1">100% On-Time Execution</div>
             </div>
           </div>
 
           {/* 2. Brands Collaborated With */}
           <div className="p-5 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 flex flex-col justify-between">
             <div className="text-zinc-400 text-xs font-mono uppercase tracking-wider flex items-center justify-between">
-              <span>Brands</span>
+              <span>Protocols</span>
               <Users className="w-4 h-4 text-purple-400" />
             </div>
             <div className="mt-4">
               <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono tabular-nums">
                 {totalBrandsCount}
               </div>
-              <div className="text-[11px] text-zinc-500 mt-1">Global &amp; Web3 Brands</div>
+              <div className="text-[11px] text-zinc-500 mt-1">Memecoins, Casinos &amp; DEXs</div>
             </div>
           </div>
 
@@ -201,14 +208,14 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({
           {/* 4. Total Content Delivered */}
           <div className="p-5 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 flex flex-col justify-between">
             <div className="text-zinc-400 text-xs font-mono uppercase tracking-wider flex items-center justify-between">
-              <span>Delivered</span>
+              <span>Assets &amp; Drops</span>
               <CheckCircle className="w-4 h-4 text-emerald-400" />
             </div>
             <div className="mt-4">
               <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono tabular-nums">
                 {totalContentDelivered}+
               </div>
-              <div className="text-[11px] text-zinc-500 mt-1">Videos, Stills &amp; VFX</div>
+              <div className="text-[11px] text-zinc-500 mt-1">Raids, Teasers &amp; Memes</div>
             </div>
           </div>
 

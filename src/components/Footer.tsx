@@ -63,14 +63,35 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
         </div>
 
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-600 font-mono">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 font-mono">
+          <div className="flex items-center gap-5">
+            <a
+              href="https://t.me/PeculiarXD"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-zinc-400 hover:text-amber-400 transition-colors"
+            >
+              Telegram @PeculiarXD
+            </a>
+            <span aria-hidden="true" className="text-zinc-800">·</span>
+            <a
+              href="https://x.com/PeculiarXD"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-zinc-400 hover:text-amber-400 transition-colors"
+            >
+              X.com/PeculiarXD
+            </a>
+            <span aria-hidden="true" className="text-zinc-800">·</span>
+            <a
+              href="mailto:Onetinesamuel@gmail.com"
+              className="text-zinc-400 hover:text-amber-400 transition-colors"
+            >
+              Onetinesamuel@gmail.com
+            </a>
+          </div>
           <div>
             &copy; {new Date().getFullYear()} Peculiar Portfolio. All Rights Reserved.
-          </div>
-          <div className="flex items-center gap-4">
-            <span>Directorial &amp; AI Motion Suite</span>
-            <span aria-hidden="true">·</span>
-            <span>Worldwide Availability</span>
           </div>
         </div>
 

@@ -30,21 +30,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             {/* Kicker */}
             <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-amber-400">
               <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-              <span>DIRECTOR &amp; DIGITAL CREATOR</span>
+              <span>WEB3 GROWTH &amp; PROMOTIONS</span>
               <span aria-hidden="true" className="text-zinc-600">·</span>
               <span className="text-zinc-400 font-sans normal-case tracking-normal">PECULIAR</span>
             </div>
 
             {/* Headline */}
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white font-display leading-[1.08] [text-wrap:balance]">
-              Turning Creative Ideas Into <br className="hidden sm:inline" />
-              <span className="text-gold-gradient">Digital Experiences.</span>
+              Helping Brands Find Their Audience &amp; <br className="hidden sm:inline" />
+              <span className="text-gold-gradient">Scaling Web3 Projects.</span>
             </h1>
 
             {/* Supporting Text */}
             <p className="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-xl font-normal">
-              I&apos;m a creative digital professional passionate about storytelling, content creation,
-              AI-powered videos, digital campaigns and building engaging online experiences.
+              I help brands and products find their exact target audience and drive real, active users. Specializing in high-velocity promotional campaigns for Web3 projects — including <span className="text-white font-medium">Memecoins, Web3 Gaming, Crypto Betting &amp; Casinos, Prediction Markets, DEXs, and Launchpads</span>.
             </p>
 
             {/* Action Buttons */}
@@ -53,7 +52,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 onClick={onExploreWork}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-semibold uppercase tracking-wider text-black bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 rounded-xl shadow-lg shadow-amber-500/20 hover:shadow-amber-500/35 transition-all duration-200 cursor-pointer"
               >
-                <span>EXPLORE MY WORK</span>
+                <span>EXPLORE MY CAMPAIGNS</span>
                 <ArrowDown className="w-3.5 h-3.5" />
               </button>
 
@@ -61,20 +60,24 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 onClick={onCollaborate}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-semibold uppercase tracking-wider text-white bg-zinc-900/80 hover:bg-zinc-800/90 border border-zinc-700/80 hover:border-zinc-500 rounded-xl transition-all duration-200 cursor-pointer"
               >
-                <span>LET&apos;S COLLABORATE</span>
+                <span>LET&apos;S WORK TOGETHER</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400" />
               </button>
             </div>
 
             {/* Quick Specialization Tags - zero-pill text */}
             <div className="pt-4 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs text-zinc-400 font-medium">
-              <span>AI Video Direction</span>
+              <span>Memecoins</span>
               <span aria-hidden="true" className="text-zinc-700">·</span>
-              <span>Cinematic Color &amp; VFX</span>
+              <span>Crypto Casinos &amp; Betting</span>
               <span aria-hidden="true" className="text-zinc-700">·</span>
-              <span>Web3 Launches</span>
+              <span>DEX &amp; Launchpads</span>
               <span aria-hidden="true" className="text-zinc-700">·</span>
-              <span>Brand Commercials</span>
+              <span>Prediction Markets</span>
+              <span aria-hidden="true" className="text-zinc-700">·</span>
+              <span>Web3 Gaming</span>
+              <span aria-hidden="true" className="text-zinc-700">·</span>
+              <span>Audience Growth</span>
             </div>
           </div>
 
@@ -105,18 +108,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-zinc-950/80 backdrop-blur-md border border-zinc-800/90 flex items-center justify-between gap-3">
                 <div className="space-y-0.5">
                   <div className="text-xs font-semibold text-white tracking-wide">
-                    2026 Creative Showreel
+                    Web3 Campaign Showreel
                   </div>
                   <div className="text-[11px] text-zinc-400">
-                    AI Visuals · Cinematic Grading · Sound
+                    Viral Launches · Token Teasers · User Influx
                   </div>
                 </div>
 
                 <button
                   onClick={onOpenReel}
                   className="w-10 h-10 rounded-full bg-amber-400 hover:bg-amber-300 text-black flex items-center justify-center shadow-md shadow-amber-400/30 transition-transform duration-200 hover:scale-110 cursor-pointer shrink-0"
-                  title="Watch Showreel"
-                  aria-label="Watch Showreel"
+                  title="Watch Web3 Showreel"
+                  aria-label="Watch Web3 Showreel"
                 >
                   <Play className="w-4 h-4 fill-current ml-0.5" />
                 </button>
@@ -133,34 +136,34 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               {totalProjects}+
             </div>
             <div className="text-xs text-zinc-400 uppercase tracking-wider font-mono mt-1">
-              Projects Completed
+              Campaigns Executed
             </div>
           </div>
 
           <div>
             <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono tabular-nums">
-              12M+
+              15M+
             </div>
             <div className="text-xs text-zinc-400 uppercase tracking-wider font-mono mt-1">
-              Organic Audience Reach
+              Crypto Community Reach
             </div>
           </div>
 
           <div>
             <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono tabular-nums">
-              140+
+              450K+
             </div>
             <div className="text-xs text-zinc-400 uppercase tracking-wider font-mono mt-1">
-              Deliverables Produced
+              Active Users &amp; Players Onboarded
             </div>
           </div>
 
           <div>
             <div className="text-2xl sm:text-3xl font-extrabold text-amber-400 font-mono tabular-nums">
-              98.4%
+              99.2%
             </div>
             <div className="text-xs text-zinc-400 uppercase tracking-wider font-mono mt-1">
-              Client Satisfaction
+              Campaign Success Rate
             </div>
           </div>
         </div>

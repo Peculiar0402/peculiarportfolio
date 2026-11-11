@@ -10,572 +10,424 @@ export const INITIAL_SETTINGS: PortfolioSettings = {
 export const INITIAL_PROJECTS: Project[] = [
   {
     id: 'proj-1',
-    title: 'Aetheria: Decentralized Frontier Teaser',
-    brandName: 'Aether Protocol',
-    brandCategory: 'Web3 & AI Infrastructure',
-    brandLogoText: 'Æ',
+    title: 'DogeMax: Viral Memecoin Launch & Trending Sprint',
+    brandName: 'DogeMax Token',
+    brandCategory: 'Memecoins & Community Tokens',
+    brandLogoText: 'DM',
     coverImage: '/src/assets/images/showcase_ai_cyberpunk_1794348743010.jpg',
-    category: 'AI Video',
-    shortDescription: 'Cinematic worldbuilding teaser trailer combining Midjourney v6 keyframes, Runway Gen-3 motion synthesis, and spatial sound design.',
-    fullOverview: 'Aether Protocol commissioned a 90-second cinematic reveal teaser to unveil their next-generation zero-knowledge consensus architecture at Global Web3 Summit. The challenge was translating abstract cryptographic mathematics into a breathtaking, story-driven sci-fi narrative of human explorers discovering an infinite cosmic computing lattice.',
-    brandInfo: 'Aether Protocol is a venture-backed distributed compute network enabling decentralized artificial intelligence workflows across global validator clusters.',
+    category: 'Memecoins',
+    shortDescription: 'High-velocity viral launch campaign driving DexScreener #1 trending, 35+ Telegram alpha caller activations, and 14,000+ token holders.',
+    fullOverview: 'Orchestrated the comprehensive pre-launch and launch-day promotional blitz for DogeMax. Coordinated meme creative engineering, coordinated Telegram raid squads, scheduled high-profile alpha caller drops across X and Telegram, and achieved organic DexScreener front-page trending within 90 minutes of DEX pool deployment.',
+    brandInfo: 'DogeMax is a high-energy community memecoin deployed on Solana with deflationary mechanics and viral social raid culture.',
     services: [
-      'AI Worldbuilding & Concept Art',
-      'Runway Gen-3 Motion Synthesis',
-      'Cinematic Camera Direction',
-      'Sound Design & 7.1 Surround Mix',
-      'Scriptwriting & Storyboarding'
+      'Memecoin Viral Launch Strategy',
+      'DexScreener & DEXTools Trending Push',
+      'KOL & Alpha Caller Coordination (35+ Channels)',
+      '24/7 Telegram Raid Management & Bots',
+      'Viral Meme Video Teasers & Sound Hooks'
     ],
     responsibilities: [
-      'Authored the complete narrative screenplay and visual beat sheet',
-      'Engineered 450+ bespoke generative prompt seeds for coherent environment consistency',
-      'Upscaled and frame-interpolated footage to pristine 4K 60fps',
-      'Directed professional voiceover casting and master dynamic sound mix'
+      'Managed end-to-end promotional timeline from stealth tease to DEX launch',
+      'Coordinated 35+ verified Web3 callers across top Tier-1 & Tier-2 alpha groups',
+      'Created 50+ viral meme assets, reaction GIFs, and animated ticker banners',
+      'Directed live X Spaces voice stage with 3,800+ concurrent listeners'
     ],
     deliverables: [
-      '90-second 4K 16:9 Official World Reveal Film',
-      '3x 15-second 9:16 Vertical Cutdowns for X, Telegram & TikTok',
-      'High-Resolution Keyframe Poster Pack for Exhibition Booths',
-      'Full Stem Sound Design Pack & Sub-bass Audio Assets'
+      'DexScreener #1 Trending for 18 Continuous Hours',
+      '50+ High-Conversion Meme Graphics & Motion Cutdowns',
+      'Community Growth Sprint (+18,500 Telegram Members)',
+      'Comprehensive Post-Launch Volume Retention Blueprint'
     ],
     date: 'October 2026',
-    duration: '3 Weeks',
-    amountPaid: 6800,
+    duration: '2 Weeks',
+    amountPaid: 8500,
     isPaymentHidden: false,
     status: 'Featured',
     featured: true,
     results: {
-      primaryMetric: '2.4M+',
-      primaryLabel: 'Global Impressions',
+      primaryMetric: '$14.2M',
+      primaryLabel: 'Peak 24h Trading Volume',
       secondaryMetrics: [
-        { label: 'Watch-Through Rate', value: '78.4%' },
-        { label: 'X/Twitter Retweets', value: '14,200+' },
-        { label: 'Discord Join Surge', value: '+8,600' }
+        { label: 'Token Holders', value: '14,200+' },
+        { label: 'DexScreener Rank', value: '#1 Trending' },
+        { label: 'Telegram Community Inflow', value: '+18,500' }
       ],
-      summary: 'The teaser generated immediate industry buzz, driving 14,200+ reposts within 48 hours and directly fueling the protocol’s sold-out testnet node registration.'
+      summary: 'The campaign propelled DogeMax to the #1 spot on Solana trending tokens, generating $14.2M in day-one volume and onboarded over 14,000 unique wallet holders.'
     },
     media: [
       {
         type: 'image',
         url: '/src/assets/images/showcase_ai_cyberpunk_1794348743010.jpg',
-        caption: 'Final 4K frame: Explorers gazing upon the obsidian compute monoliths'
+        caption: 'Viral launch keyframe & DexScreener trending hero asset'
       },
       {
         type: 'image',
         url: '/src/assets/images/hero_peculiar_cinematic_1794348742341.jpg',
-        caption: 'Production studio timeline & color correction suite during assembly'
+        caption: 'Promotional war room & real-time caller coordination suite'
       }
     ],
     clientTestimonial: {
-      quote: 'Peculiar completely redefined our brand aura. The film elevated our protocol launch into an unforgettable cinematic phenomenon.',
-      author: 'Marcus Vance',
-      role: 'Head of Growth, Aether Protocol'
+      quote: 'Peculiar brought raw energy and calculated marketing precision. His caller network and raid coordination took us straight to #1 on DexScreener.',
+      author: 'Kaelen R.',
+      role: 'Lead Dev, DogeMax'
     },
     socials: {
-      telegram: 'https://t.me/aether_protocol',
-      discord: 'https://discord.gg/aether',
-      x: 'https://x.com/aether_protocol',
-      website: 'https://aether.network'
+      telegram: 'https://t.me/PeculiarXD',
+      discord: '',
+      x: 'https://x.com/PeculiarXD',
+      website: 'https://dogemax.meme'
     }
   },
   {
     id: 'proj-2',
-    title: 'Aurelia: Golden Elixir Luxury Campaign',
-    brandName: 'Aurelia Maison',
-    brandCategory: 'Haute Parfumerie & Luxury Goods',
-    brandLogoText: 'AR',
+    title: 'StakeVolt: Crypto Casino & Sports Betting Acquisition',
+    brandName: 'StakeVolt Casino',
+    brandCategory: 'iGaming, Casino & Betting',
+    brandLogoText: 'SV',
     coverImage: '/src/assets/images/showcase_brand_commercial_1794348742458.jpg',
-    category: 'Brand Campaigns',
-    shortDescription: 'High-fashion commercial spotlighting the amber liquid nuances, optical refractions, and tactile luxury of artisanal fragrance.',
-    fullOverview: 'Aurelia Maison required a multi-channel digital launch for their flagship autumn release "Sol d’Ambre". Combining physical macro lens cinematography with subtle 3D generative fluid particle overlays, we created an atmosphere of pure warmth, elegance, and exclusivity.',
-    brandInfo: 'Aurelia Maison is an independent luxury fragrance house founded in Paris, specializing in rare botanical extractions and bespoke flacons.',
+    category: 'Casino & Betting',
+    shortDescription: 'Multi-stage player onboarding sprint delivering 4,800 active crypto depositors, VIP high-roller acquisition, and affiliate streamer activation.',
+    fullOverview: 'StakeVolt commissioned an aggressive user acquisition push to scale their Web3 sportsbook and crypto live casino. We deployed high-conversion influencer giveaways, live stream wagering raids, wager bonus hooks, and targeted Telegram crypto betting communities across CIS, LATAM, and Southeast Asia.',
+    brandInfo: 'StakeVolt is a fast-growing licensed crypto casino and sportsbook supporting instant multi-chain crypto deposits, live dealer blackjack, and provably fair originals.',
     services: [
-      'Commercial Creative Direction',
-      'Macro Product Cinematography',
-      'Color Grading (ACES Pipeline)',
-      'Digital Campaign Ad Variants',
-      'Social Cut-Down Strategy'
+      'Crypto Casino Player Acquisition Funnels',
+      'VIP High-Roller Targeted Outreach',
+      'Streamer & Affiliate Promotion Deals',
+      'Sports Betting Event Tournament Hype',
+      'Wager Bonus Promo Video Production'
     ],
     responsibilities: [
-      'Architected aesthetic concept centering on dark obsidian slate and molten amber reflections',
-      'Executed studio lighting and high-speed fluid motion captures',
-      'Supervised sound design combining cello acoustics with subtle breath ambience',
-      'Delivered aspect ratios optimized for Instagram, YouTube pre-roll, and digital billboards'
+      'Designed high-converting deposit bonus promotional funnels',
+      'Recruited 12 top Kick/YouTube crypto casino live streamers',
+      'Segmented high-roller crypto whales for private VIP rakeback campaigns',
+      'Monitored real-time retention and first-time deposit (FTD) conversion rates'
     ],
     deliverables: [
-      '60-second Director’s Cut Hero Film',
-      '4x 15-second E-commerce Social Ad Hooks',
-      '12x High-Fashion Editorial Still Retouches',
-      'E-Commerce Hero Banner Loop (WebM/MP4)'
+      '4,800+ First-Time Crypto Depositors (FTDs)',
+      '12x Live Streamer Sponsored Broadcasts',
+      '6x High-Paced Promotional Teaser Videos for X & Telegram',
+      'Automated Telegram Rakeback & Bonus Distribution Channel'
     ],
     date: 'September 2026',
     duration: '4 Weeks',
-    amountPaid: 8500,
+    amountPaid: 12500,
     isPaymentHidden: false,
     status: 'Completed',
     featured: true,
     results: {
-      primaryMetric: '+310%',
-      primaryLabel: 'E-commerce Pre-Orders',
+      primaryMetric: '$2.8M',
+      primaryLabel: 'Monthly Wagering Volume',
       secondaryMetrics: [
-        { label: 'Organic Video Views', value: '890,000+' },
-        { label: 'ROAS on Paid Ad Spend', value: '4.8x' },
-        { label: 'Average Watch Duration', value: '44 seconds' }
+        { label: 'Active Depositors (FTD)', value: '4,800+' },
+        { label: 'Player 30-Day Retention', value: '41.8%' },
+        { label: 'Average Deposit Size', value: '$240 USD' }
       ],
-      summary: 'The digital campaign drove complete sell-out of the limited 5,000-bottle premiere batch within twelve hours of the video premiere.'
+      summary: 'Drove over $2.8M in monthly wagering turnover and acquired 4,800+ verified active betting accounts with industry-leading 41% month-one retention.'
     },
     media: [
       {
         type: 'image',
         url: '/src/assets/images/showcase_brand_commercial_1794348742458.jpg',
-        caption: 'Signature campaign still: Flacon illuminated against slate rock texture'
+        caption: 'VIP high-roller tournament promotional visual'
       }
     ],
     clientTestimonial: {
-      quote: 'Peculiar brought an authentic luxury sensibility that our international clientele fell in love with instantly.',
-      author: 'Claire de Saint-Germain',
-      role: 'Creative Director, Aurelia Maison'
+      quote: 'Peculiar understands player acquisition better than traditional agencies. The conversion on his crypto casino funnels blew past our KPI targets.',
+      author: 'Viktor V.',
+      role: 'Head of Marketing, StakeVolt'
     },
     socials: {
-      telegram: '',
+      telegram: 'https://t.me/PeculiarXD',
       discord: '',
-      x: 'https://x.com/aurelia_maison',
-      website: 'https://aurelia-parfums.com'
+      x: 'https://x.com/PeculiarXD',
+      website: 'https://stakevolt.io'
     }
   },
   {
     id: 'proj-3',
-    title: 'Neon Horizon: Visual Storytelling & VFX Grade',
-    brandName: 'Vanguard Film Studio',
-    brandCategory: 'Independent Cinema & Streaming',
-    brandLogoText: 'VF',
+    title: 'ApexLaunch: Multi-Chain DEX & Launchpad IDO Sprint',
+    brandName: 'ApexLaunch DEX',
+    brandCategory: 'DEX, DeFi & Launchpads',
+    brandLogoText: 'AL',
     coverImage: '/src/assets/images/showcase_before_after_1794348743041.jpg',
-    category: 'Video Editing',
-    shortDescription: 'Comprehensive color grading, pacing overhaul, and atmospheric visual effects for a psychological cyberpunk short film.',
-    fullOverview: 'Tasked with elevating an independent sci-fi short film filmed in log format into an arresting cyberpunk visual showcase. Re-architected pacing, removed distracting practical rig artifacts, and introduced volumetric dusk purple atmosphere and rich neon city skyline illumination.',
-    brandInfo: 'Vanguard Film Studio is a boutique production company producing festival-contending narrative drama and high-concept episodic series.',
+    category: 'DEX & Launchpad',
+    shortDescription: 'Comprehensive IDO launchpad awareness campaign generating $8.6M in initial token volume and 6,200 whitelisted pool participants.',
+    fullOverview: 'ApexLaunch required maximum ecosystem visibility for their cross-chain liquidity protocol and Tier-1 launchpad debut. We structured a multi-tiered promotional blitz: liquidity provider incentive teasers, tier staking campaigns, co-promotional cross-posts with 8 ecosystem partner protocols, and heavily boosted X Spaces with leading DeFi founders.',
+    brandInfo: 'ApexLaunch is a decentralized exchange and non-custodial token incubator facilitating seamless liquidity bootstrapping across Ethereum, Arbitrum, and Solana.',
     services: [
-      'DaVinci Resolve Color Grading',
-      'Dynamic Pacing & Continuity Edit',
-      'Atmospheric VFX & Sky Replacements',
-      'Audio Sweetening & Foley Enhancement'
+      'DEX & Launchpad IDO Promotion Sprint',
+      'Liquidity Pool Mining Campaign Hype',
+      'Whitelist User Funnels & Verification Raids',
+      'DeFi Influencer & Research Thread Campaigns',
+      'Ecosystem Co-Marketing & AMAs'
     ],
     responsibilities: [
-      'Processed 18 hours of raw Arri Alexa Mini LF camera footage',
-      'Engineered unified custom film LUT calibrated for deep OLED blacks and vibrant magenta/violet highlights',
-      'Composited dynamic animated city skyline backdrop into exterior mountain sequences'
+      'Architected viral whitelist referral mechanism driving 28,000+ registrations',
+      'Orchestrated 6 high-impact deep-dive threads by respected Web3 analysts',
+      'Produced cinematic 3D tokenomics and swap mechanism animation trailers',
+      'Moderated multi-chain launchpad AMA sessions with over 5,000 live participants'
     ],
     deliverables: [
-      '22-Minute 4K HDR Festival Master',
-      'Official 120-second Theatrical Trailer',
-      'Before & After VFX Breakdown Reel',
-      'DCP Packaging for Festival Screenings'
+      'Oversubscribed IDO Launch (100% Sold Out in 8 Minutes)',
+      '6,200+ Active Liquidity Stakers Onboarded',
+      '8x Multi-Platform Launch Teaser Clips & Visuals',
+      'Comprehensive DEX Trading Volume Sprint Execution'
     ],
     date: 'August 2026',
-    duration: '5 Weeks',
-    amountPaid: 7200,
+    duration: '3 Weeks',
+    amountPaid: 9800,
     isPaymentHidden: false,
     status: 'Completed',
     featured: true,
     results: {
-      primaryMetric: '3 Awards',
-      primaryLabel: 'Festival Laurels Won',
+      primaryMetric: '$8.6M',
+      primaryLabel: 'Trading Volume Inflow',
       secondaryMetrics: [
-        { label: 'Official Selections', value: '7 Festivals' },
-        { label: 'Vimeo Staff Pick', value: 'Awarded' },
-        { label: 'YouTube Premiere Views', value: '380k' }
+        { label: 'IDO Sell-Out Time', value: '8 Minutes' },
+        { label: 'Whitelisted Users', value: '28,400+' },
+        { label: 'Total Value Locked (TVL)', value: '+$11.5M' }
       ],
-      summary: 'Garnered Best Cinematography and Best Editing honours across independent film circuits in Berlin and Montreal.'
+      summary: 'The IDO allocation sold out completely in under 8 minutes, with initial DEX liquidity exceeding $11.5M TVL on launch day.'
     },
     media: [
       {
         type: 'image',
         url: '/src/assets/images/showcase_before_after_1794348743041.jpg',
-        caption: 'Final graded shot: Lone protagonist looking across the glowing twilight metropolis'
+        caption: 'ApexLaunch multi-chain DEX interface & tokenomics visual'
       }
-    ]
+    ],
+    clientTestimonial: {
+      quote: 'Peculiar is our go-to marketer for launchpad visibility. His reach across crypto native traders turned our IDO into an instant sell-out.',
+      author: 'Dmitri S.',
+      role: 'Co-Founder, ApexLaunch'
+    },
+    socials: {
+      telegram: 'https://t.me/PeculiarXD',
+      discord: '',
+      x: 'https://x.com/PeculiarXD',
+      website: 'https://apexlaunch.xyz'
+    }
   },
   {
     id: 'proj-4',
-    title: 'Kinetix Velocity: High-Octane Social Campaign',
-    brandName: 'Kinetix Sportswear',
-    brandCategory: 'Athletic Wear & Active Tech',
-    brandLogoText: 'KX',
+    title: 'CyberClash: Web3 Gaming & Mini-App Player Influx',
+    brandName: 'CyberClash Game',
+    brandCategory: 'Web3 Gaming & Mini-Apps',
+    brandLogoText: 'CC',
     coverImage: '/src/assets/images/hero_peculiar_cinematic_1794348742341.jpg',
-    category: 'Social Media',
-    shortDescription: 'Fast-paced, rhythm-synced vertical content suite for athlete apparel collection launch across TikTok, Reels, and Shorts.',
-    fullOverview: 'Developed a 12-part high-retention vertical video series featuring kinetic typography, match cuts, seamless transitions, and aggressive sound effects designed to break thumb-scroll patterns on modern mobile feeds.',
-    brandInfo: 'Kinetix is a fast-growing performance athletic brand empowering urban runners, calisthenics athletes, and track sprinters.',
+    category: 'Web3 Gaming',
+    shortDescription: 'Gamified player acquisition sprint onboarding 180,000+ active players onto Telegram mini-app and web3 PvP arenas.',
+    fullOverview: 'CyberClash needed rapid community scale for their Telegram-native Web3 battle game. We constructed a viral referral loop, airdrop quest campaigns, micro-influencer gaming tournaments, and active guild onboarding that accelerated their daily active users (DAU) by over 600%.',
+    brandInfo: 'CyberClash is a cyberpunk tactical card battler and Telegram mini-app with on-chain NFT asset wagering and daily token rewards.',
     services: [
-      'Short-Form Video Strategy',
-      'Kinetic Typography Design',
-      'Match-Cut Transition Editing',
-      'Audio Hook & Trending Sound Design'
+      'Telegram Mini-App User Onboarding',
+      'Web3 Gaming Player Referral Loops',
+      'Crypto Gaming Guild Partnerships (5 Guilds)',
+      'Airdrop Quest & Daily Challenge Campaigns',
+      'High-CTR Gameplay Video & Meme Ads'
     ],
     responsibilities: [
-      'Developed 12 video story scripts around athletic grit, speed, and recovery',
-      'Crafted custom kinetic typography animation templates',
-      'Optimized retention curves through rigorous 3-second hook testing'
+      'Engineered gamified referral milestones driving 3.4x organic sharing multiplier',
+      'Onboarded 5 competitive Web3 gaming guilds from Southeast Asia and Europe',
+      'Produced 15 fast-paced gameplay clips optimized for Telegram and TikTok',
+      'Managed 2-week launch leaderboard tournament with live prize payouts'
     ],
     deliverables: [
-      '12x 9:16 Ultra HD Finished Social Videos',
-      '60x High-Energy Still Grab Thumbnails with Dynamic Badging',
-      'Editable After Effects Motion Graphic Project Files'
+      '180,000+ Verified Player Registrations',
+      '42,000+ Daily Active Users (DAU) Sustained',
+      '15x High-Energy Gameplay Teaser Clips',
+      'On-Chain Wallet Connection Surge (+65,000 Wallets)'
     ],
     date: 'July 2026',
-    duration: '2 Weeks',
-    amountPaid: 5400,
+    duration: '3 Weeks',
+    amountPaid: 7600,
     isPaymentHidden: false,
     status: 'Completed',
     featured: false,
     results: {
-      primaryMetric: '4.8M+',
-      primaryLabel: 'Organic Social Views',
+      primaryMetric: '180,000+',
+      primaryLabel: 'Active Players Onboarded',
       secondaryMetrics: [
-        { label: 'Average Engagement Rate', value: '11.2%' },
-        { label: 'Saves & Shares', value: '42,000+' },
-        { label: 'Follower Growth', value: '+34k followers' }
+        { label: 'Daily Active Users (DAU)', value: '42,000+' },
+        { label: 'Wallets Connected', value: '65,000+' },
+        { label: 'Organic Referral Multiplier', value: '3.4x' }
       ],
-      summary: 'Two videos achieved viral breakthrough, accumulating over 2.1M views each and increasing seasonal athletic line conversions by 185%.'
+      summary: 'Propelled CyberClash into the top tier of Telegram mini-apps with over 180k players and sustained high in-game retention.'
     },
     media: [
       {
         type: 'image',
         url: '/src/assets/images/hero_peculiar_cinematic_1794348742341.jpg',
-        caption: 'Color grading and rapid transition sync suite'
+        caption: 'GameFi player tournament broadcast and streaming suite'
       }
-    ]
+    ],
+    clientTestimonial: {
+      quote: 'Peculiar brought an insane wave of real gamers to our mini-app. Our servers were buzzing from day one.',
+      author: 'Elijah T.',
+      role: 'Producer, CyberClash'
+    },
+    socials: {
+      telegram: 'https://t.me/PeculiarXD',
+      discord: '',
+      x: 'https://x.com/PeculiarXD',
+      website: 'https://cyberclash.game'
+    }
   },
   {
-    id: 'proj-5',
-    title: 'Solstice Protocol: Tokenomics & Ecosystem Explainer',
-    brandName: 'Solstice Network',
-    brandCategory: 'Decentralized Finance & Staking',
-    brandLogoText: 'SOL',
-    coverImage: '/src/assets/images/showcase_ai_cyberpunk_1794348743010.jpg',
-    category: 'Web3',
-    shortDescription: 'Simplifying complex liquidity staking algorithms through stunning isometric 3D animations and AI-rendered visual analogies.',
-    fullOverview: 'Solstice Network needed to explain their restaking yield mechanisms to both institutional funds and everyday crypto participants without boring technical jargon. We created an engaging, visually rich motion explainer video that demystified their consensus mechanics.',
-    brandInfo: 'Solstice Network is a modular liquidity protocol providing yield primitives and automated staking distribution on Ethereum Layer 2s.',
-    services: [
-      'Technical Script Simplification',
-      '3D Isometric Motion Graphics',
-      'AI Generative Scene Transitions',
-      'Voiceover Production'
-    ],
-    responsibilities: [
-      'Translated dense 40-page whitepaper into concise 2-minute visual narrative',
-      'Animated geometric data flow diagrams and protocol vaults',
-      'Directed sound design featuring futuristic synthesizer accents'
-    ],
-    deliverables: [
-      '2-Minute Explainer Video (16:9 & 9:16)',
-      'Interactive Web Visual Component for Landing Page',
-      'Infographic Carousel Kit for Twitter Threads'
-    ],
-    date: 'June 2026',
-    duration: '3 Weeks',
-    amountPaid: 6200,
+    id: 'proj-template',
+    title: '',
+    brandName: '',
+    brandCategory: 'Select Category',
+    brandLogoText: '+',
+    coverImage: '',
+    category: 'Memecoins',
+    shortDescription: 'Clean editable project template. Click Edit to add your campaign deliverables, results, social links, and imagery.',
+    fullOverview: '',
+    brandInfo: '',
+    services: ['Audience Acquisition', 'Web3 Campaign Promotion'],
+    responsibilities: ['Campaign Lead'],
+    deliverables: ['Promotional Campaign Deliverable'],
+    date: '2026',
+    duration: '2 Weeks',
+    amountPaid: 0,
     isPaymentHidden: false,
-    status: 'Completed',
+    status: 'In Progress',
     featured: false,
     results: {
-      primaryMetric: '$18M+',
-      primaryLabel: 'Total Value Locked Influx',
-      secondaryMetrics: [
-        { label: 'Video Views on X', value: '620,000' },
-        { label: 'Community Telegram Growth', value: '+14,000' },
-        { label: 'Investor Pitch Conversion', value: '91%' }
-      ],
-      summary: 'Became the central media anchor on their protocol documentation and homepage, cited by venture funds as one of the clearest explainers in the ecosystem.'
+      primaryMetric: '0',
+      primaryLabel: 'Metric',
+      summary: ''
     },
-    media: [
-      {
-        type: 'image',
-        url: '/src/assets/images/showcase_ai_cyberpunk_1794348743010.jpg',
-        caption: 'Visualizing liquidity pools as interconnected glowing energy nodes'
-      }
-    ]
-  },
-  {
-    id: 'proj-6',
-    title: 'Chronos Atelier: Timepiece Heritage Short',
-    brandName: 'Chronos Atelier',
-    brandCategory: 'Haute Horlogerie',
-    brandLogoText: 'CH',
-    coverImage: '/src/assets/images/showcase_brand_commercial_1794348742458.jpg',
-    category: 'Brand Campaigns',
-    shortDescription: 'Cinematic brand documentary examining the micro-mechanics, titanium finishing, and generational heritage of luxury tourbillons.',
-    fullOverview: 'Produced a poetic, tactile brand documentary taking collectors into the inner workings of an ultra-luxury mechanical watchmaker. Filmed with extreme macro probe lenses and paired with acoustic ASMR sound design of gears, balance wheels, and ticking escapements.',
-    brandInfo: 'Chronos Atelier is a Swiss-crafted watchmaker producing fewer than 150 handmade mechanical complications per year.',
-    services: [
-      'Mini-Documentary Production',
-      'Macro Probe Cinematography',
-      'ASMR Sound Architecture',
-      'Brand Identity Storytelling'
-    ],
-    responsibilities: [
-      'Conceptualized "The Architecture of a Second" narrative arc',
-      'Captured microscopic gear teeth and hand-beveled chamfers under soft directional light',
-      'Mastered spatial sound recording of mechanical movements'
-    ],
-    deliverables: [
-      '3-Minute Brand Anthem Film',
-      '5x Instagram Macro Vignettes',
-      'Private Collector Exhibition Video Loop'
-    ],
-    date: 'May 2026',
-    duration: '3 Weeks',
-    amountPaid: 7800,
-    isPaymentHidden: false,
-    status: 'Completed',
-    featured: false,
-    results: {
-      primaryMetric: '100%',
-      primaryLabel: 'Edition Sold Out',
-      secondaryMetrics: [
-        { label: 'Average Watch Price', value: '$42,000' },
-        { label: 'Private Inquiries Generated', value: '340+' },
-        { label: 'Global Press Features', value: '11 Publications' }
-      ],
-      summary: 'The film premiered at Geneva Watch Week, leading directly to all 50 pieces in the collection being allocated to collectors within three days.'
-    },
-    media: [
-      {
-        type: 'image',
-        url: '/src/assets/images/showcase_brand_commercial_1794348742458.jpg',
-        caption: 'Precision studio lighting revealing tactile materials and mechanical depth'
-      }
-    ]
-  },
-  {
-    id: 'proj-7',
-    title: 'Lumina Digital: AI Character Storytelling Showcase',
-    brandName: 'Lumina Media Labs',
-    brandCategory: 'AI Entertainment & Virtual IP',
-    brandLogoText: 'LM',
-    coverImage: '/src/assets/images/showcase_before_after_1794348743041.jpg',
-    category: 'Content Creation',
-    shortDescription: 'Developing consistent, emotionally resonant digital avatars and cinematic lore for an interactive narrative universe.',
-    fullOverview: 'Lumina Media needed to demonstrate that AI-generated characters could convey genuine vulnerability, personality, and cinematic presence across continuous multi-scene storytelling. We established character LoRA weights, consistent wardrobe, dynamic lighting, and expressive lip-sync integration.',
-    brandInfo: 'Lumina Media Labs develops next-generation virtual creators, digital actors, and interactive entertainment experiences.',
-    services: [
-      'AI Character Consistency Engineering',
-      'Facial Rigging & Motion Capture Retargeting',
-      'Generative Environment Construction',
-      'Interactive Dialogue Content'
-    ],
-    responsibilities: [
-      'Trained custom visual identity models for 4 fictional protagonists',
-      'Maintained 100% facial and costume consistency across 30 distinct scenes',
-      'Integrated real-time emotive facial capture onto AI generated keyframes'
-    ],
-    deliverables: [
-      'Pilot Episode (6 Minutes 4K)',
-      'Character Bible & Prompt Asset Library',
-      'Behind the Scenes Production Case Study Video'
-    ],
-    date: 'April 2026',
-    duration: '4 Weeks',
-    amountPaid: 6500,
-    isPaymentHidden: false,
-    status: 'Completed',
-    featured: false,
-    results: {
-      primaryMetric: '1.2M+',
-      primaryLabel: 'Pilot Watch-Time Minutes',
-      secondaryMetrics: [
-        { label: 'Audience Retention', value: '71%' },
-        { label: 'Community Fan-Art Submissions', value: '450+' },
-        { label: 'Series Greenlight', value: '10 Episodes Funded' }
-      ],
-      summary: 'The pilot showcase demonstrated groundbreaking visual fidelity, securing Lumina a multi-project development deal with an international streaming platform.'
-    },
-    media: [
-      {
-        type: 'image',
-        url: '/src/assets/images/showcase_before_after_1794348743041.jpg',
-        caption: 'Character close-up with volumetric ambient backlight and fine textural detail'
-      }
-    ]
-  },
-  {
-    id: 'proj-8',
-    title: 'Vortex Protocol: Decentralized Community Hype Trailer',
-    brandName: 'Vortex Labs',
-    brandCategory: 'Web3 Gaming & Metaverse',
-    brandLogoText: 'VX',
-    coverImage: '/src/assets/images/showcase_ai_cyberpunk_1794348743010.jpg',
-    category: 'Web3',
-    shortDescription: 'Fast-paced, heavy-bass teaser showcasing in-game assets, battle arenas, and token launch mechanics.',
-    fullOverview: 'Vortex Labs needed a thunderous, high-energy reveal video to ignite anticipation ahead of their public NFT asset mint and governance token listing. We combined Unreal Engine 5 cinematic camera pans with custom generative AI textural passovers and custom glitch transitions.',
-    brandInfo: 'Vortex Labs is a pioneering studio building open-world competitive sci-fi gaming experiences backed by blockchain asset ownership.',
-    services: [
-      'Unreal Engine 5 Cinematic Sequencing',
-      'AI Texture & Environmental Enhancement',
-      'Glitch FX & Sound Design',
-      'Social Cut-Down Strategy'
-    ],
-    responsibilities: [
-      'Extracted raw 3D assets and animated cinematic action sequences',
-      'Composed adrenaline-fueled hybrid synth/orchestral soundtrack',
-      'Delivered coordinated launch cutdowns across 4 platforms'
-    ],
-    deliverables: [
-      '75-Second 4K Cinematic Trailer',
-      '4x 10-Second Countdown Stories',
-      'Animated Twitch & Discord Banner Graphics Pack'
-    ],
-    date: 'March 2026',
-    duration: '2.5 Weeks',
-    amountPaid: 5300,
-    isPaymentHidden: false,
-    status: 'Completed',
-    featured: false,
-    results: {
-      primaryMetric: '$2.8M',
-      primaryLabel: 'Mint Volume in 4 Hours',
-      secondaryMetrics: [
-        { label: 'Trailer Views on Twitter', value: '480,000' },
-        { label: 'Whitelist Registrations', value: '38,000' },
-        { label: 'Discord Server Capacity', value: '50k Cap Reached' }
-      ],
-      summary: 'The launch video became the most shared gaming teaser in the Web3 space during Q1 2026, driving an instantaneous mint sell-out.'
-    },
-    media: [
-      {
-        type: 'image',
-        url: '/src/assets/images/showcase_ai_cyberpunk_1794348743010.jpg',
-        caption: 'Futuristic battle arena keyframe rendered in ultra-widescreen cinematic ratio'
-      }
-    ]
+    media: [],
+    socials: {
+      telegram: '',
+      discord: '',
+      x: '',
+      website: ''
+    }
   }
 ];
 
 export const INITIAL_SERVICES: ServiceItem[] = [
   {
     id: 'serv-1',
-    title: 'AI Video Creation',
-    subtitle: 'Next-Generation Generative Filmmaking',
-    description: 'Transforming ambitious narratives into photorealistic, high-concept cinematic films using state-of-the-art AI video models (Runway Gen-3, Midjourney v6, Kling, Luma) combined with professional directorial craft.',
-    deliverables: ['Custom Concept Art', 'Consistent Character Models', '4K Upscaling & Motion Polish', 'Commercial Rights Transfer'],
+    title: 'Memecoin Viral Launches & Raids',
+    subtitle: 'DexScreener Trending & Social Hype',
+    description: 'Engineering massive viral momentum for memecoins and community tokens. We orchestrate DexScreener/DEXTools trending sprints, 24/7 Telegram raids, aggressive meme engineering, and synchronized alpha caller activations.',
+    deliverables: ['DexScreener & DEXTools Trending Push', 'Coordinated Alpha Caller Drops (30+ Channels)', '24/7 Telegram Raid Squads & Custom Bots', 'Viral Meme Video Teasers & Ticker Graphics'],
+    timeline: '3–7 Days',
+    startingPrice: '$3,500'
+  },
+  {
+    id: 'serv-2',
+    title: 'Crypto Casino & Betting Acquisition',
+    subtitle: 'High-Roller Onboarding & Wager Volume',
+    description: 'High-conversion player acquisition funnels tailored for Web3 casinos, sportsbooks, and betting protocols. We drive verified first-time depositors (FTDs), recruit casino live streamers, and convert crypto whales into active wagerers.',
+    deliverables: ['First-Time Depositor (FTD) Funnels', 'VIP High-Roller Targeted Outreach', 'Kick & YouTube Casino Streamer Deals', 'Tournament & Rakeback Promo Campaigns'],
+    timeline: '2–4 Weeks',
+    startingPrice: '$6,000'
+  },
+  {
+    id: 'serv-3',
+    title: 'DEX & Launchpad IDO Promotions',
+    subtitle: 'Liquidity Hype & Trading Volume Sprints',
+    description: 'Promoting decentralized exchanges, automated market makers (AMMs), and token launchpads. We build whitelist hysteria, drive initial swap volume, onboard liquidity providers, and moderate high-attendance X Spaces.',
+    deliverables: ['Oversubscribed IDO Whitelist Sprints', 'Trading Volume Incentive Campaigns', 'DeFi Analyst Deep-Dive Threads', 'Ecosystem Partner Co-Marketing & AMAs'],
+    timeline: '2–3 Weeks',
+    startingPrice: '$5,000'
+  },
+  {
+    id: 'serv-4',
+    title: 'Web3 Gaming & GameFi Player Growth',
+    subtitle: 'Mini-Apps & Active Gamer Onboarding',
+    description: 'Scaling Telegram mini-apps, tap-to-earn loops, on-chain RPGs, and metaverse games. We design viral referral milestones, onboard active gaming guilds, and drive daily active users (DAU) who actually play and transact.',
+    deliverables: ['Telegram Mini-App Player Inflow', 'Viral Referral Multiplier Mechanics', 'Gaming Guild Partnerships (SEA, LATAM, EU)', 'Gameplay Ad Trailers & Tournament Hype'],
     timeline: '2–3 Weeks',
     startingPrice: '$4,500'
   },
   {
-    id: 'serv-2',
-    title: 'Cinematic Storytelling',
-    subtitle: 'Emotion, Pacing & Narrative Impact',
-    description: 'Crafting compelling visual narratives for brands, artists, and leaders. We script, storyboard, and direct films that captivate audiences, evoke genuine emotion, and build enduring brand loyalty.',
-    deliverables: ['Full Treatment & Screenplay', 'Storyboard Visual Beat Sheet', 'Voiceover & Actor Direction', 'Sound Architecture'],
-    timeline: '3–4 Weeks',
-    startingPrice: '$5,000'
-  },
-  {
-    id: 'serv-3',
-    title: 'Video Editing',
-    subtitle: 'Precision Rhythm, Color & Polish',
-    description: 'Industry-standard post-production and editing in DaVinci Resolve & Premiere Pro. From rhythmic YouTube documentaries to glossy TV spots, we master timing, match cuts, sound foley, and cinematic color grading.',
-    deliverables: ['Multi-Cam & Raw Assembly', 'ACES / Film Emulation Color Grade', 'Dialogue Cleaning & Foley FX', 'Social Cutdowns in Multiple Ratios'],
-    timeline: '1–2 Weeks',
-    startingPrice: '$3,200'
-  },
-  {
-    id: 'serv-4',
-    title: 'Social Media Content Creation',
-    subtitle: 'High-Retention Short-Form Mastery',
-    description: 'Hook-driven vertical videos (TikTok, Instagram Reels, YouTube Shorts) designed to stop thumbs in under 2 seconds. Optimized retention curves, kinetic typography, and viral trend integration.',
-    deliverables: ['Batched 9:16 Video Series', 'High-CTR Custom Thumbnails', 'Kinetic Typography Templates', 'Platform-Specific Caption Hooks'],
-    timeline: '1–2 Weeks',
-    startingPrice: '$2,800'
-  },
-  {
     id: 'serv-5',
-    title: 'Web3 Content & Campaign Promotion',
-    subtitle: 'Crypto, Protocol & Metaverse Hype',
-    description: 'Tailored visual campaigns for Web3 protocols, NFT collections, DeFi primitives, and decentralized AI networks. We translate complex smart contracts and tokenomics into viral, community-igniting media.',
-    deliverables: ['Launch Teaser Trailers', 'Tokenomics 3D Explainer Videos', 'X/Twitter Hype Cutdowns', 'Exhibition & Keynote Video Loops'],
-    timeline: '2–3 Weeks',
-    startingPrice: '$4,800'
+    title: 'Prediction Markets & Speculative Growth',
+    subtitle: 'Bettor Onboarding & Narrative Building',
+    description: 'Driving high-intent volume to on-chain prediction markets, binary options, and decentralized betting exchanges. We align trending real-world events, sports, and political narratives with your betting pools.',
+    deliverables: ['Event-Driven Market Promo Blitzes', 'Crypto Speculator & Bettor Targeting', 'Real-Time Odds Infographics & Videos', 'Leaderboard & Liquidity Volume Incentives'],
+    timeline: '1–3 Weeks',
+    startingPrice: '$4,200'
   },
   {
     id: 'serv-6',
-    title: 'Brand Promotional Videos',
-    subtitle: 'Luxury, Commercial & Product Launches',
-    description: 'Commercial video productions designed to convert interest into revenue. Highlighting product craftsmanship, tactile textures, and premium brand aesthetics that command luxury pricing.',
-    deliverables: ['Director’s Cut Main Commercial', '15s & 30s Paid Ad Variations', 'High-Resolution Campaign Stills', 'Web Video Integration Formats'],
-    timeline: '3–4 Weeks',
-    startingPrice: '$5,500'
-  },
-  {
-    id: 'serv-7',
-    title: 'Creative Direction',
-    subtitle: 'Holistic Visual Architecture',
-    description: 'Guiding brands from blank canvas to iconic market presence. We establish visual guidelines, moodboards, creative strategies, and multi-platform campaign aesthetics that set you leagues apart.',
-    deliverables: ['Brand Visual Constitution', 'Campaign Creative Moodboards', 'Production Guidelines & Style Guides', 'Executive Creative Consulting'],
+    title: 'Audience Targeting & User Funnels',
+    subtitle: 'Finding The Exact Right Audience',
+    description: 'Helping brands and crypto products discover their exact niche users instead of burning budget on bot clicks. We map wallet behaviors, crypto communities, and demographic segments to deliver high-converting active users.',
+    deliverables: ['Niche Audience Segmentation & Mapping', 'High-Converting Landing & Funnel Optimization', 'Multi-Platform Shilling Strategies', 'User Retention & Activation Analytics'],
     timeline: '2–4 Weeks',
     startingPrice: '$4,000'
   },
   {
-    id: 'serv-8',
-    title: 'AI Visual Content',
-    subtitle: 'Hyper-Realistic Stills & Asset Suites',
-    description: 'Custom-trained AI image generation and graphic asset generation for website heroes, digital advertisements, album artwork, editorial spreads, and social channels.',
-    deliverables: ['High-DPI 8K Master Retouches', 'Consistent Visual Style Libraries', 'Bespoke LoRA / Prompt Packs', 'Full Commercial License'],
+    id: 'serv-7',
+    title: 'Influencer (KOL) Network & Raids',
+    subtitle: 'Direct Access To Leading Crypto Callers',
+    description: 'Direct relationships with top Tier-1 & Tier-2 crypto influencers, alpha callers, Telegram signal channels, and X Space hosts. We negotiate the best rates, ensure authentic delivery, and track real wallet conversions.',
+    deliverables: ['Curated Network of 50+ Verified Callers', 'Coordinated Launch Multi-Channel Drops', 'Hosted X Spaces & Community AMAs', 'Transparent Call Tracking & Conversion Audits'],
     timeline: '1–2 Weeks',
-    startingPrice: '$2,500'
+    startingPrice: '$3,800'
+  },
+  {
+    id: 'serv-8',
+    title: 'Viral Web3 Creative Assets & Teasers',
+    subtitle: 'High-Octane AI Motion & Ticker Memes',
+    description: 'Scroll-stopping visual assets designed to convert crypto degens and serious investors alike. High-concept AI video trailers, 3D tokenomics breakdowns, viral meme packs, and billboard-grade launch announcements.',
+    deliverables: ['Cinematic 4K AI Video Reveal Trailers', 'Batched Meme Pack & Viral Reaction GIFs', 'DexScreener/Banner Ad Graphics Suite', 'Full High-Resolution Commercial Media Rights'],
+    timeline: '1–2 Weeks',
+    startingPrice: '$3,000'
   }
 ];
 
 export const INITIAL_BRANDS: BrandPartner[] = [
-  { id: 'b-1', name: 'Aether Protocol', category: 'Web3 & AI', projectId: 'proj-1', symbol: 'Æ', accent: '#a855f7' },
-  { id: 'b-2', name: 'Aurelia Maison', category: 'Haute Parfumerie', projectId: 'proj-2', symbol: 'AR', accent: '#eab308' },
-  { id: 'b-3', name: 'Vanguard Studios', category: 'Cinema & Film', projectId: 'proj-3', symbol: 'VF', accent: '#f43f5e' },
-  { id: 'b-4', name: 'Kinetix Athletics', category: 'Sportswear Tech', projectId: 'proj-4', symbol: 'KX', accent: '#3b82f6' },
-  { id: 'b-5', name: 'Solstice Network', category: 'DeFi & Staking', projectId: 'proj-5', symbol: 'SOL', accent: '#10b981' },
-  { id: 'b-6', name: 'Chronos Atelier', category: 'Luxury Horology', projectId: 'proj-6', symbol: 'CH', accent: '#d97706' },
-  { id: 'b-7', name: 'Lumina Media Labs', category: 'Virtual IP & AI', projectId: 'proj-7', symbol: 'LM', accent: '#8b5cf6' },
-  { id: 'b-8', name: 'Vortex Labs', category: 'Web3 Gaming', projectId: 'proj-8', symbol: 'VX', accent: '#06b6d4' }
+  { id: 'b-1', name: 'DogeMax Meme', category: 'Memecoins', projectId: 'proj-1', symbol: 'DM', accent: '#eab308' },
+  { id: 'b-2', name: 'StakeVolt Casino', category: 'Crypto Betting', projectId: 'proj-2', symbol: 'SV', accent: '#a855f7' },
+  { id: 'b-3', name: 'ApexLaunch DEX', category: 'DEX & Launchpad', projectId: 'proj-3', symbol: 'AL', accent: '#3b82f6' },
+  { id: 'b-4', name: 'CyberClash Game', category: 'Web3 Gaming', projectId: 'proj-4', symbol: 'CC', accent: '#10b981' }
 ];
 
 export const INITIAL_SHOWCASE_ITEMS = [
   {
     id: 'sc-1',
-    title: 'Aetherian Monolith Odyssey',
+    title: 'DogeMax Viral Launch Ticker Blitz',
     type: 'video',
-    category: 'AI Video Reel',
+    category: 'Memecoin Campaign',
     mediaUrl: '/src/assets/images/showcase_ai_cyberpunk_1794348743010.jpg',
-    videoPreviewUrl: '', // can be played via video overlay modal
-    duration: '01:30',
-    description: 'High-concept exploration of artificial intelligence and cosmic architecture rendered with generative neural diffusion.'
+    videoPreviewUrl: '',
+    duration: '01:00',
+    description: 'DexScreener #1 trending promotional blitz and synchronized caller storm.'
   },
   {
     id: 'sc-2',
-    title: 'Aurelia Sol d’Ambre Flacon',
+    title: 'StakeVolt High-Roller Casino Showcase',
     type: 'image',
-    category: 'Brand Commercial',
+    category: 'Crypto Casino & Betting',
     mediaUrl: '/src/assets/images/showcase_brand_commercial_1794348742458.jpg',
     duration: '',
-    description: 'Tactile luxury still commercial featuring obsidian slate reflections and warm golden light diffusion.'
+    description: 'High-conversion VIP player acquisition campaign generating $2.8M in wagering volume.'
   },
   {
     id: 'sc-3',
-    title: 'Cyberpunk Skyline — Grading & VFX',
+    title: 'ApexLaunch Multi-Chain DEX Reveal',
     type: 'before_after',
-    category: 'Color Grade & VFX',
+    category: 'DEX & Launchpad',
     mediaUrl: '/src/assets/images/showcase_before_after_1794348743041.jpg',
-    beforeUrl: '/src/assets/images/showcase_before_after_1794348743041.jpg', // in slider we apply grayscale/ungraded filter for comparison
+    beforeUrl: '/src/assets/images/showcase_before_after_1794348743041.jpg',
     afterUrl: '/src/assets/images/showcase_before_after_1794348743041.jpg',
     duration: '',
-    description: 'Interactive comparison between raw flat log sensor capture and final filmic ACES color grading.'
+    description: 'Interactive comparison between raw organic outreach vs. coordinated multi-channel launchpad blitz.'
   },
   {
     id: 'sc-4',
-    title: 'Creative Director Studio Suite',
+    title: 'Web3 Growth & Marketing Suite',
     type: 'image',
-    category: 'Studio Behind The Scenes',
+    category: 'Campaign Operations',
     mediaUrl: '/src/assets/images/hero_peculiar_cinematic_1794348742341.jpg',
     duration: '',
-    description: 'Behind the scenes inside Peculiar’s color suite and generative AI video synthesis pipeline.'
+    description: 'Inside Peculiar’s real-time campaign monitoring, raid operations, and alpha caller dashboard.'
   }
 ];

@@ -15,7 +15,78 @@ export const storage = {
     try {
       const data = localStorage.getItem(STORAGE_KEYS.PROJECTS);
       if (data) {
-        return JSON.parse(data);
+        const parsed = JSON.parse(data);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          // Check if stored data has the old extra templates (projects 5-8 or > 5 items without proj-template)
+          const hasOldTemplates =
+            parsed.some(
+              (p: Project) =>
+                p.id === 'proj-5' ||
+                p.id === 'proj-6' ||
+                p.id === 'proj-7' ||
+                p.id === 'proj-8'
+            ) || (parsed.length > 5 && !parsed.some((p: Project) => p.id === 'proj-template'));
+
+          // If stored items still have the old generic non-web3 samples, upgrade them to the new Web3 projects unless user customized them
+          const migrated = parsed.map((p: Project) => {
+            if (p.id === 'proj-1' && p.title === 'Aetheria: Decentralized Frontier Teaser') {
+              return INITIAL_PROJECTS[0];
+            }
+            if (p.id === 'proj-2' && p.title === 'Aurelia: Golden Elixir Luxury Campaign') {
+              return INITIAL_PROJECTS[1];
+            }
+            if (p.id === 'proj-3' && p.title === 'Neon Horizon: Visual Storytelling & VFX Grade') {
+              return INITIAL_PROJECTS[2];
+            }
+            if (p.id === 'proj-4' && p.title === 'Kinetix Velocity: High-Octane Social Campaign') {
+              return INITIAL_PROJECTS[3];
+            }
+            return p;
+          });
+
+          if (hasOldTemplates) {
+            // Keep the 4 projects user has edited, remove the rest templates, and leave one blank template
+            const first4 = migrated.slice(0, 4);
+            const templateProject: Project = {
+              id: 'proj-template',
+              title: '',
+              brandName: '',
+              brandCategory: 'Select Category',
+              brandLogoText: '+',
+              coverImage: '',
+              category: 'Memecoins',
+              shortDescription: 'Clean project template. Click to edit and add your brand, deliverables, social links and media.',
+              fullOverview: '',
+              brandInfo: '',
+              services: ['Audience Acquisition', 'Web3 Campaign Promotion'],
+              responsibilities: ['Campaign Lead'],
+              deliverables: ['Promotional Campaign Deliverable'],
+              date: '2026',
+              duration: '2 Weeks',
+              amountPaid: 0,
+              isPaymentHidden: false,
+              status: 'In Progress',
+              featured: false,
+              results: {
+                primaryMetric: '0',
+                primaryLabel: 'Metric',
+                summary: '',
+              },
+              media: [],
+              socials: {
+                telegram: '',
+                discord: '',
+                x: '',
+                website: '',
+              },
+            };
+            const updated = [...first4, templateProject];
+            storage.saveProjects(updated);
+            return updated;
+          }
+          storage.saveProjects(migrated);
+          return migrated;
+        }
       }
     } catch (e) {
       console.error('Failed to parse projects from localStorage', e);

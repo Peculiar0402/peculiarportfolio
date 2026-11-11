@@ -13,11 +13,11 @@ interface ProjectsSectionProps {
 
 const CATEGORIES: ProjectCategory[] = [
   'All Projects',
-  'AI Video',
-  'Video Editing',
-  'Content Creation',
-  'Web3',
-  'Social Media',
+  'Memecoins',
+  'Casino & Betting',
+  'DEX & Launchpad',
+  'Web3 Gaming',
+  'Prediction Markets',
   'Brand Campaigns',
 ];
 
@@ -53,13 +53,13 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
           <div>
             <div className="text-xs font-mono uppercase tracking-[0.2em] text-amber-400 mb-2 flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-              <span>CUSTOMIZABLE ARCHIVE &amp; CASE STUDIES</span>
+              <span>VERIFIED PROMOTIONS &amp; CAMPAIGN ARCHIVE</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-display">
-              Selected Works &amp; Client Projects
+              Web3 Campaigns &amp; Client Projects
             </h2>
             <p className="text-zinc-400 text-sm mt-2 max-w-xl">
-              Every project below can be edited directly. Add your own work, upload custom images, and configure official Telegram, Discord &amp; X links.
+              Showcase of verified promotional blitzes across Memecoins, Crypto Casinos, Betting, DEXs, Launchpads, and Web3 Gaming. Fully editable with deliverables, volume metrics, and socials.
             </p>
           </div>
 
@@ -138,29 +138,51 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               return (
                 <div
                   key={project.id}
-                  onClick={() => onSelectProject(project)}
+                  onClick={() => {
+                    if (!project.title || project.id === 'proj-template') {
+                      onEditProject?.(project);
+                    } else {
+                      onSelectProject(project);
+                    }
+                  }}
                   className="group relative flex flex-col bg-zinc-950/90 rounded-2xl border border-zinc-800/90 hover:border-amber-400/40 overflow-hidden shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
                 >
                   {/* Media Cover Image */}
-                  <div className="relative aspect-video w-full overflow-hidden bg-black">
-                    <img
-                      src={project.coverImage}
-                      alt={project.title}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
-                    />
+                  <div className="relative aspect-video w-full overflow-hidden bg-zinc-950 flex items-center justify-center border-b border-zinc-850">
+                    {project.coverImage ? (
+                      <img
+                        src={project.coverImage}
+                        alt={project.title || 'Project'}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-zinc-900/90 to-zinc-950 p-6 text-center border-2 border-dashed border-zinc-800 group-hover:border-amber-400/50 transition-colors">
+                        <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-700/80 flex items-center justify-center text-amber-400 mb-2 group-hover:scale-110 transition-transform shadow-md">
+                          <Plus className="w-6 h-6" />
+                        </div>
+                        <span className="text-xs font-mono font-medium text-amber-300">
+                          + Click to Add Image
+                        </span>
+                        <span className="text-[10px] text-zinc-500 font-mono mt-0.5">
+                          Editable Template
+                        </span>
+                      </div>
+                    )}
 
                     {/* Gradient scrim */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent pointer-events-none" />
+                    {project.coverImage && (
+                      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent pointer-events-none" />
+                    )}
 
                     {/* Top Brand Logo, Status & Direct Edit Button */}
                     <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between">
                       <div className="flex items-center gap-2 pointer-events-none">
                         <span className="w-7 h-7 rounded-md bg-black/75 backdrop-blur-md border border-white/10 text-amber-300 font-mono text-xs font-bold flex items-center justify-center">
-                          {project.brandLogoText || project.brandName.slice(0, 2).toUpperCase()}
+                          {project.brandLogoText || (project.brandName ? project.brandName.slice(0, 2).toUpperCase() : '+')}
                         </span>
                         <span className="text-xs font-semibold text-white px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-md border border-white/10">
-                          {project.brandName}
+                          {project.brandName || 'New Brand'}
                         </span>
                       </div>
 
@@ -220,7 +242,11 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
                       {/* Project Title */}
                       <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-amber-300 transition-colors font-display line-clamp-1">
-                        {project.title}
+                        {project.title || (
+                          <span className="text-amber-400/90 italic font-normal">
+                            + Click to Enter Project Title
+                          </span>
+                        )}
                       </h3>
 
                       {/* Short Description */}

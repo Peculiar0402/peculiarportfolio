@@ -1,6 +1,6 @@
 import React from 'react';
 import { INITIAL_SERVICES } from '../data/initialData';
-import { Sparkles, Video, Film, Share2, Compass, Cpu, Palette, ArrowUpRight, Flame } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { ServiceItem } from '../types/portfolio';
 
 interface ServicesSectionProps {
@@ -8,28 +8,6 @@ interface ServicesSectionProps {
 }
 
 export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectService }) => {
-  const getServiceIcon = (id: string) => {
-    switch (id) {
-      case 'serv-1':
-        return <Sparkles className="w-5 h-5 text-amber-400" />;
-      case 'serv-2':
-        return <Film className="w-5 h-5 text-purple-400" />;
-      case 'serv-3':
-        return <Video className="w-5 h-5 text-blue-400" />;
-      case 'serv-4':
-        return <Share2 className="w-5 h-5 text-rose-400" />;
-      case 'serv-5':
-        return <Flame className="w-5 h-5 text-amber-500" />;
-      case 'serv-6':
-        return <Compass className="w-5 h-5 text-emerald-400" />;
-      case 'serv-7':
-        return <Palette className="w-5 h-5 text-indigo-400" />;
-      case 'serv-8':
-      default:
-        return <Cpu className="w-5 h-5 text-amber-300" />;
-    }
-  };
-
   return (
     <section id="services" className="py-20 sm:py-28 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -58,13 +36,13 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
                 className="group relative flex flex-col justify-between p-6 rounded-2xl bg-zinc-950/80 border border-zinc-800/80 hover:border-amber-400/40 shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
                 <div>
-                  {/* Top Header: Icon + Editorial Number */}
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:border-amber-400/30 transition-colors">
-                      {getServiceIcon(service.id)}
-                    </div>
-                    <span className="text-xs font-mono text-zinc-600 group-hover:text-amber-400 transition-colors">
+                  {/* Top Header: Clean Editorial Index */}
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-mono font-bold text-amber-400/90 tracking-wider">
                       {editorialIndex}.
+                    </span>
+                    <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
+                      SERVICE
                     </span>
                   </div>
 

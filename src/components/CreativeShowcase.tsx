@@ -1,20 +1,51 @@
 import React, { useState, useRef } from 'react';
-import { INITIAL_SHOWCASE_ITEMS } from '../data/initialData';
-import { Play, Maximize2, X, Sliders, Sparkles, Film, Image as ImageIcon } from 'lucide-react';
+import { Project } from '../types/portfolio';
+import { Play, Maximize2, X, Sliders, ExternalLink } from 'lucide-react';
 
-export const CreativeShowcase: React.FC = () => {
+interface CreativeShowcaseProps {
+  projects: Project[];
+  onSelectProject?: (project: Project) => void;
+}
+
+export const CreativeShowcase: React.FC<CreativeShowcaseProps> = ({ projects, onSelectProject }) => {
   // Before-After comparison slider state
   const [sliderPosition, setSliderPosition] = useState(52);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Filter projects that have actual content and images
+  const activeProjectsWithMedia = projects.filter(
+    (p) =>
+      (p.coverImage && p.coverImage.trim().length > 0) ||
+      (p.brandLogoImage && p.brandLogoImage.trim().length > 0) ||
+      (p.media && p.media.length > 0)
+  );
+
+  // Selected project for before/after comparison
+  const comparisonProject =
+    activeProjectsWithMedia.find(
+      (p) =>
+        p.category === 'Memecoins' ||
+        p.category === 'Casino & Betting' ||
+        p.category === 'DEX & Launchpad' ||
+        p.category === 'Web3 Gaming' ||
+        p.category === 'AI Video'
+    ) || activeProjectsWithMedia[0];
+
+  const comparisonImage =
+    comparisonProject?.coverImage ||
+    comparisonProject?.brandLogoImage ||
+    '/src/assets/images/showcase_before_after_1794348743041.jpg';
+
   // Lightbox state
   const [activeItem, setActiveItem] = useState<{
     title: string;
-    type: string;
+    brandName?: string;
+    category?: string;
+    type: 'image' | 'video';
     mediaUrl: string;
     description: string;
-    youtubeId?: string;
+    relatedProject?: Project;
   } | null>(null);
 
   const handleSliderMove = (clientX: number) => {
@@ -35,6 +66,59 @@ export const CreativeShowcase: React.FC = () => {
     }
   };
 
+  // Compile showcase cards from active projects first
+  const showcaseCards = activeProjectsWithMedia.map((p) => ({
+    id: p.id,
+    title: p.title || p.brandName || 'Creative Deliverable',
+    brandName: p.brandName,
+    category: p.category,
+    image: p.coverImage || p.brandLogoImage || '/src/assets/images/showcase_ai_cyberpunk_1794348743010.jpg',
+    type: (p.category === 'Memecoins' || p.category === 'AI Video' || p.category === 'Video Editing' ? 'video' : 'image') as 'video' | 'image',
+    subtitle: p.shortDescription || p.services.join(' · '),
+    description: p.fullOverview || p.shortDescription || 'High-fidelity creative asset crafted for brand distribution.',
+    project: p,
+  }));
+
+  // Fallback defaults if user hasn't added many projects yet
+  const defaultShowcaseFallbacks = [
+    {
+      id: 'default-1',
+      title: 'DogeMax DexScreener #1 Trending Blitz',
+      brandName: 'DogeMax Token',
+      category: 'MEMECOIN RAID',
+      image: '/src/assets/images/showcase_ai_cyberpunk_1794348743010.jpg',
+      type: 'video' as const,
+      subtitle: 'DexScreener Trending + 35 Telegram Alpha Callers',
+      description: 'High-octane viral memecoin launch campaign driving peak $14.2M 24h trading volume.',
+    },
+    {
+      id: 'default-2',
+      title: 'StakeVolt High-Roller VIP Acquisition',
+      brandName: 'StakeVolt Casino',
+      category: 'CRYPTO BETTING',
+      image: '/src/assets/images/showcase_brand_commercial_1794348742458.jpg',
+      type: 'image' as const,
+      subtitle: 'Streamer Raids & High-Roller Player Funnels',
+      description: 'Web3 casino player onboarding delivering 4,800 active crypto depositors and $2.8M wagered.',
+    },
+    {
+      id: 'default-3',
+      title: 'ApexLaunch DEX & Multi-Chain IDO',
+      brandName: 'ApexLaunch DEX',
+      category: 'DEX & LAUNCHPAD',
+      image: '/src/assets/images/hero_peculiar_cinematic_1794348742341.jpg',
+      type: 'image' as const,
+      subtitle: 'Liquidity Hype & Trading Volume Sprints',
+      description: 'Comprehensive token launchpad campaign generating $8.6M initial volume and sold-out IDO.',
+    },
+  ];
+
+  // Display project cards; if less than 3, supplement with default fallbacks
+  const displayCards =
+    showcaseCards.length >= 3
+      ? showcaseCards
+      : [...showcaseCards, ...defaultShowcaseFallbacks.slice(showcaseCards.length)];
+
   return (
     <section id="showcase" className="py-20 sm:py-28 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,13 +126,13 @@ export const CreativeShowcase: React.FC = () => {
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <div className="text-xs font-mono uppercase tracking-[0.2em] text-amber-400 mb-2">
-            VISUAL EXPERIMENTS &amp; REELS
+            WEB3 CAMPAIGN VISUALS &amp; PROMOTION VAULT
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-display">
-            My Creative Showcase
+            My Creative &amp; Promotional Showcase
           </h2>
           <p className="text-zinc-400 text-sm mt-3">
-            Explorations across generative AI video, cinematic color suites, macro commercial photography, and interactive craft.
+            High-octane viral campaign assets, meme engineering, DEX launch graphics, and teasers engineered to stop the scroll and onboard crypto natives.
           </p>
         </div>
 
@@ -61,7 +145,9 @@ export const CreativeShowcase: React.FC = () => {
                 <span>INTERACTIVE CRAFT BREAKDOWN</span>
               </div>
               <h3 className="text-xl font-bold text-white font-display mt-1">
-                Raw Log Sensor vs. ACES Film Emulation &amp; VFX
+                {comparisonProject?.title
+                  ? `${comparisonProject.title} — Campaign Grade &amp; VFX Depth`
+                  : 'Organic Outreach vs. Coordinated Multi-Channel Viral Blitz'}
               </h3>
             </div>
             <div className="text-xs font-mono text-zinc-400 flex items-center gap-2">
@@ -81,13 +167,13 @@ export const CreativeShowcase: React.FC = () => {
           >
             {/* Background: After (Final Graded / VFX) Image */}
             <img
-              src="/src/assets/images/showcase_before_after_1794348743041.jpg"
+              src={comparisonImage}
               alt="After: Final ACES Graded Frame"
               referrerPolicy="no-referrer"
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-black/75 backdrop-blur-md rounded-md border border-amber-400/30 text-xs font-mono text-amber-300">
-              AFTER: ACES GRADE &amp; VOLUMETRIC VFX
+              AFTER: FINAL ACES GRADE &amp; VFX
             </div>
 
             {/* Foreground: Before (Flat Raw Log with low saturation & contrast simulation) */}
@@ -96,18 +182,18 @@ export const CreativeShowcase: React.FC = () => {
               style={{ width: `${sliderPosition}%` }}
             >
               <img
-                src="/src/assets/images/showcase_before_after_1794348743041.jpg"
+                src={comparisonImage}
                 alt="Before: Raw Log Frame"
                 referrerPolicy="no-referrer"
                 className="absolute inset-0 w-full h-full object-cover max-w-none"
                 style={{
                   width: containerRef.current ? `${containerRef.current.clientWidth}px` : '100%',
                   height: '100%',
-                  filter: 'saturate(0.3) contrast(0.65) brightness(1.25)',
+                  filter: 'saturate(0.25) contrast(0.6) brightness(1.28)',
                 }}
               />
               <div className="absolute top-4 left-4 z-10 px-3 py-1 bg-black/75 backdrop-blur-md rounded-md border border-white/10 text-xs font-mono text-zinc-300">
-                BEFORE: RAW CAMERA LOG (FLAT SENSOR)
+                BEFORE: RAW FLAT SENSOR CAPTURE
               </div>
             </div>
 
@@ -125,109 +211,53 @@ export const CreativeShowcase: React.FC = () => {
 
         {/* Visual Gallery Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          {/* Card 1: AI Cyberpunk Odyssey */}
-          <div
-            onClick={() =>
-              setActiveItem({
-                title: 'Aetherian Monolith Odyssey',
-                type: 'video',
-                mediaUrl: '/src/assets/images/showcase_ai_cyberpunk_1794348743010.jpg',
-                description: 'Generative AI neural motion synthesis generated for decentralized worldbuilding reveal.',
-              })
-            }
-            className="group relative rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-950 aspect-[4/3] cursor-pointer shadow-xl transition-all duration-300 hover:border-amber-400/40"
-          >
-            <img
-              src="/src/assets/images/showcase_ai_cyberpunk_1794348743010.jpg"
-              alt="AI Video Still"
-              referrerPolicy="no-referrer"
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-5 flex flex-col justify-between">
-              <div className="flex justify-between items-center">
-                <span className="text-[11px] font-mono text-amber-400 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10">
-                  AI MOTION REEL
-                </span>
-                <span className="w-8 h-8 rounded-full bg-amber-400 text-black flex items-center justify-center shadow-md">
-                  <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
-                </span>
-              </div>
-              <div>
-                <h4 className="text-base font-bold text-white font-display">Aetherian Monolith Odyssey</h4>
-                <p className="text-xs text-zinc-400 mt-1 line-clamp-1">Midjourney v6 + Runway Gen-3 Directorial Cut</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 2: Luxury Fragrance Commercial */}
-          <div
-            onClick={() =>
-              setActiveItem({
-                title: 'Aurelia Sol d’Ambre Flacon',
-                type: 'image',
-                mediaUrl: '/src/assets/images/showcase_brand_commercial_1794348742458.jpg',
-                description: 'Macro product studio photography highlighting golden optical refractions on dark slate.',
-              })
-            }
-            className="group relative rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-950 aspect-[4/3] cursor-pointer shadow-xl transition-all duration-300 hover:border-amber-400/40"
-          >
-            <img
-              src="/src/assets/images/showcase_brand_commercial_1794348742458.jpg"
-              alt="Brand Commercial Keyframe"
-              referrerPolicy="no-referrer"
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-5 flex flex-col justify-between">
-              <div className="flex justify-between items-center">
-                <span className="text-[11px] font-mono text-amber-400 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10">
-                  COMMERCIAL STILL
-                </span>
-                <span className="w-8 h-8 rounded-full bg-black/70 backdrop-blur-md text-white flex items-center justify-center border border-white/10">
-                  <Maximize2 className="w-3.5 h-3.5" />
-                </span>
-              </div>
-              <div>
-                <h4 className="text-base font-bold text-white font-display">Aurelia Sol d’Ambre Flacon</h4>
-                <p className="text-xs text-zinc-400 mt-1 line-clamp-1">Tactile luxury studio lighting &amp; macro optics</p>
+          {displayCards.map((card) => (
+            <div
+              key={card.id}
+              onClick={() =>
+                setActiveItem({
+                  title: card.title,
+                  brandName: card.brandName,
+                  category: card.category,
+                  type: card.type,
+                  mediaUrl: card.image,
+                  description: card.description,
+                  relatedProject: 'project' in card ? card.project : undefined,
+                })
+              }
+              className="group relative rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-950 aspect-[4/3] cursor-pointer shadow-xl transition-all duration-300 hover:border-amber-400/40"
+            >
+              <img
+                src={card.image}
+                alt={card.title}
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent p-5 flex flex-col justify-between">
+                <div className="flex justify-between items-center">
+                  <span className="text-[11px] font-mono text-amber-400 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10">
+                    {card.category}
+                  </span>
+                  <span className="w-8 h-8 rounded-full bg-amber-400 text-black flex items-center justify-center shadow-md">
+                    {card.type === 'video' ? (
+                      <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
+                    ) : (
+                      <Maximize2 className="w-3.5 h-3.5" />
+                    )}
+                  </span>
+                </div>
+                <div>
+                  {card.brandName && (
+                    <div className="text-[11px] font-mono text-amber-300/80 mb-0.5 uppercase tracking-wide">
+                      {card.brandName}
+                    </div>
+                  )}
+                  <h4 className="text-base font-bold text-white font-display">{card.title}</h4>
+                  <p className="text-xs text-zinc-400 mt-1 line-clamp-1">{card.subtitle}</p>
+                </div>
               </div>
             </div>
-          </div>
-
-          {/* Card 3: Creative Suite Behind The Scenes */}
-          <div
-            onClick={() =>
-              setActiveItem({
-                title: 'Studio Creative Direction Suite',
-                type: 'image',
-                mediaUrl: '/src/assets/images/hero_peculiar_cinematic_1794348742341.jpg',
-                description: 'Inside Peculiar’s dedicated DaVinci color management and AI pipeline workstation.',
-              })
-            }
-            className="group relative rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-950 aspect-[4/3] cursor-pointer shadow-xl transition-all duration-300 hover:border-amber-400/40"
-          >
-            <img
-              src="/src/assets/images/hero_peculiar_cinematic_1794348742341.jpg"
-              alt="Studio Suite"
-              referrerPolicy="no-referrer"
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-5 flex flex-col justify-between">
-              <div className="flex justify-between items-center">
-                <span className="text-[11px] font-mono text-purple-400 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10">
-                  STUDIO ARCHIVE
-                </span>
-                <span className="w-8 h-8 rounded-full bg-black/70 backdrop-blur-md text-white flex items-center justify-center border border-white/10">
-                  <ImageIcon className="w-3.5 h-3.5" />
-                </span>
-              </div>
-              <div>
-                <h4 className="text-base font-bold text-white font-display">Studio Creative Direction</h4>
-                <p className="text-xs text-zinc-400 mt-1 line-clamp-1">Hardware color grading, synthesis &amp; mastering</p>
-              </div>
-            </div>
-          </div>
-
+          ))}
         </div>
 
       </div>
@@ -240,9 +270,12 @@ export const CreativeShowcase: React.FC = () => {
             <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-800 bg-zinc-900/50">
               <div>
                 <span className="text-[11px] font-mono uppercase tracking-wider text-amber-400">
-                  {activeItem.type.toUpperCase()} PREVIEW
+                  {activeItem.category || activeItem.type.toUpperCase()} PREVIEW
                 </span>
-                <h3 className="text-base font-bold text-white">{activeItem.title}</h3>
+                <h3 className="text-base font-bold text-white">
+                  {activeItem.title}
+                  {activeItem.brandName ? ` · ${activeItem.brandName}` : ''}
+                </h3>
               </div>
               <button
                 onClick={() => setActiveItem(null)}
@@ -272,22 +305,37 @@ export const CreativeShowcase: React.FC = () => {
                       Directorial Reel Available
                     </div>
                     <div className="text-[11px] text-zinc-400">
-                      Full 4K ProRes master available upon client inquiry or private screening link.
+                      Full 4K master available upon client inquiry or private screening link.
                     </div>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* Footer description */}
-            <div className="p-5 border-t border-zinc-800 flex items-center justify-between bg-zinc-900/40">
+            {/* Footer description & Case study link */}
+            <div className="p-5 border-t border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-zinc-900/40">
               <p className="text-xs text-zinc-300 max-w-xl">{activeItem.description}</p>
-              <button
-                onClick={() => setActiveItem(null)}
-                className="px-4 py-1.5 text-xs font-medium text-black bg-amber-400 hover:bg-amber-300 rounded-lg cursor-pointer"
-              >
-                Close Viewer
-              </button>
+              <div className="flex items-center gap-3">
+                {activeItem.relatedProject && onSelectProject && (
+                  <button
+                    onClick={() => {
+                      const proj = activeItem.relatedProject;
+                      setActiveItem(null);
+                      if (proj) onSelectProject(proj);
+                    }}
+                    className="px-4 py-1.5 text-xs font-medium text-amber-300 border border-amber-400/40 hover:bg-amber-400/10 rounded-lg flex items-center gap-1.5 cursor-pointer"
+                  >
+                    <span>View Project Case Study</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </button>
+                )}
+                <button
+                  onClick={() => setActiveItem(null)}
+                  className="px-4 py-1.5 text-xs font-medium text-black bg-amber-400 hover:bg-amber-300 rounded-lg cursor-pointer"
+                >
+                  Close Viewer
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -295,3 +343,4 @@ export const CreativeShowcase: React.FC = () => {
     </section>
   );
 };
+

@@ -158,7 +158,7 @@ export default function App() {
           onExploreWork={() => scrollToSection('projects')}
           onCollaborate={() => scrollToSection('contact')}
           onOpenReel={() => setShowReelModal(true)}
-          totalProjects={projects.length}
+          totalProjects={projects.filter((p) => p.title && p.title.trim().length > 0).length || 4}
         />
 
         {/* Projects Section */}
@@ -184,10 +184,13 @@ export default function App() {
         <ServicesSection onSelectService={handleSelectService} />
 
         {/* Brands and Collaborations */}
-        <BrandsSection onBrandClick={handleBrandClick} />
+        <BrandsSection projects={projects} onBrandClick={handleBrandClick} />
 
         {/* Creative Showcase & Lightbox */}
-        <CreativeShowcase />
+        <CreativeShowcase
+          projects={projects}
+          onSelectProject={(p) => setSelectedProject(p)}
+        />
 
         {/* Contact & Collaboration */}
         <ContactSection preselectedService={preselectedService} />
@@ -246,7 +249,7 @@ export default function App() {
               <div className="flex items-center gap-2">
                 <Play className="w-4 h-4 text-amber-400 fill-current" />
                 <span className="text-sm font-bold text-white font-display">
-                  PECULIAR — 2026 OFFICIAL CREATIVE SHOWREEL
+                  PECULIAR — WEB3 GROWTH &amp; CAMPAIGN SHOWREEL
                 </span>
               </div>
               <button
@@ -271,10 +274,10 @@ export default function App() {
                   <Play className="w-7 h-7 fill-current ml-1" />
                 </div>
                 <h3 className="text-xl sm:text-2xl font-extrabold text-white font-display">
-                  Storytelling · Generative AI Video · Commercial Grading
+                  Memecoins · Crypto Casinos · DEXs · Games
                 </h3>
                 <p className="text-xs sm:text-sm text-zinc-300 max-w-md mt-2">
-                  4K ProRes Master Showreel. For private client screening link or bespoke pitches, contact via the form below.
+                  High-velocity audience acquisition, viral DexScreener trending sprints, and active player funnels.
                 </p>
                 <button
                   onClick={() => {
@@ -283,14 +286,14 @@ export default function App() {
                   }}
                   className="mt-5 px-5 py-2 rounded-xl text-xs font-semibold text-black bg-amber-400 hover:bg-amber-300 transition-colors"
                 >
-                  Request Full High-Res Screening
+                  Contact For Campaign Planning
                 </button>
               </div>
             </div>
 
             <div className="px-6 py-3 border-t border-zinc-800 bg-zinc-950 flex items-center justify-between text-xs text-zinc-500 font-mono">
-              <span>Runway Gen-3 · Midjourney v6 · DaVinci Resolve Studio · ACES</span>
-              <span>Duration: 01:45</span>
+              <span>Viral Raids · DexScreener Trending · Alpha Callers · Player Onboarding</span>
+              <span>Available 24/7</span>
             </div>
           </div>
         </div>

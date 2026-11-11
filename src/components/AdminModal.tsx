@@ -530,16 +530,21 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                   <div className="space-y-1">
                     <label className="text-xs font-mono uppercase text-zinc-400">Category</label>
                     <select
-                      value={currentProject.category || 'AI Video'}
+                      value={currentProject.category || 'Memecoins'}
                       onChange={(e) => setCurrentProject({ ...currentProject, category: e.target.value as ProjectCategory })}
                       className="w-full px-3 py-2 text-xs bg-zinc-900 border border-zinc-800 rounded-lg focus:border-amber-400 focus:outline-none text-white"
                     >
+                      <option value="Memecoins">Memecoins</option>
+                      <option value="Casino & Betting">Casino &amp; Betting</option>
+                      <option value="DEX & Launchpad">DEX &amp; Launchpad</option>
+                      <option value="Web3 Gaming">Web3 Gaming</option>
+                      <option value="Prediction Markets">Prediction Markets</option>
+                      <option value="Brand Campaigns">Brand Campaigns</option>
                       <option value="AI Video">AI Video</option>
                       <option value="Video Editing">Video Editing</option>
                       <option value="Content Creation">Content Creation</option>
                       <option value="Web3">Web3</option>
                       <option value="Social Media">Social Media</option>
-                      <option value="Brand Campaigns">Brand Campaigns</option>
                     </select>
                   </div>
 

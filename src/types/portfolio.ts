@@ -1,11 +1,16 @@
 export type ProjectCategory = 
   | 'All Projects'
+  | 'Memecoins'
+  | 'Casino & Betting'
+  | 'DEX & Launchpad'
+  | 'Web3 Gaming'
+  | 'Prediction Markets'
+  | 'Brand Campaigns'
   | 'AI Video' 
   | 'Video Editing' 
   | 'Content Creation' 
   | 'Web3' 
-  | 'Social Media' 
-  | 'Brand Campaigns';
+  | 'Social Media';
 
 export interface ProjectMedia {
   type: 'image' | 'video' | 'youtube';
@@ -30,6 +35,7 @@ export interface Project {
   brandName: string;
   brandCategory: string;
   brandLogoText?: string;
+  brandLogoImage?: string;
   coverImage: string;
   category: ProjectCategory;
   shortDescription: string;

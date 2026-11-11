@@ -60,7 +60,7 @@ export const WelcomePopup: React.FC<WelcomePopupProps> = ({ isOpen, onEnter, onC
         {/* Studio Identifier */}
         <div className="flex items-center gap-2 text-xs font-mono tracking-[0.25em] text-amber-400/90 uppercase mb-4">
           <Zap className="w-3.5 h-3.5" />
-          <span>OFFICIAL DIGITAL ARCHIVE</span>
+          <span>WEB3 GROWTH &amp; AUDIENCE ACQUISITION</span>
         </div>
 
         {/* Main Title */}
@@ -71,7 +71,7 @@ export const WelcomePopup: React.FC<WelcomePopupProps> = ({ isOpen, onEnter, onC
 
         {/* Subtext */}
         <p className="text-zinc-300 text-sm sm:text-base font-normal max-w-md mx-auto leading-relaxed mb-8">
-          Creativity, Innovation and Results — A Showcase of My Digital Journey.
+          Helping brands find their audience and driving active users across Memecoins, Crypto Casinos, Betting, Prediction Markets, DEXs &amp; Gaming.
         </p>
 
         {/* Introductory Progress Bar */}
@@ -83,7 +83,7 @@ export const WelcomePopup: React.FC<WelcomePopupProps> = ({ isOpen, onEnter, onC
             />
           </div>
           <div className="flex justify-between items-center text-[11px] font-mono text-zinc-500 mt-2">
-            <span>{isReady ? 'PORTFOLIO READY' : 'SYNCHRONIZING ARCHIVE'}</span>
+            <span>{isReady ? 'PORTFOLIO READY' : 'SYNCHRONIZING CAMPAIGNS'}</span>
             <span className="tabular-nums text-amber-400/80">{progress}%</span>
           </div>
         </div>
@@ -98,12 +98,14 @@ export const WelcomePopup: React.FC<WelcomePopupProps> = ({ isOpen, onEnter, onC
         </button>
 
         {/* Discreet bottom note */}
-        <div className="mt-8 pt-6 border-t border-zinc-900 w-full flex items-center justify-center gap-4 text-xs text-zinc-500">
-          <span>Directorial Reel</span>
+        <div className="mt-8 pt-6 border-t border-zinc-900 w-full flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-zinc-500 font-mono">
+          <span>Memecoins</span>
           <span aria-hidden="true">·</span>
-          <span>AI Motion</span>
+          <span>Crypto Casinos &amp; Betting</span>
           <span aria-hidden="true">·</span>
-          <span>Verified Client Impact</span>
+          <span>DEX &amp; Launchpad</span>
+          <span aria-hidden="true">·</span>
+          <span>Web3 Gaming</span>
         </div>
       </div>
     </div>
